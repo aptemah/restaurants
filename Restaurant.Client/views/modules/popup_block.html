@@ -1,0 +1,54 @@
+<div class="popup-change" ng-click="vm.popupHide()">
+
+  <form class="change-name">
+    <div class="logo"></div>
+    <p>Сменить имя</p>
+    <input-validate class="input-reg user-number">
+      <input type="text" ng-model="vm.userName" />
+    </input-validate>
+    <button type="submit" class="button" ng-click="vm.userChange('name')">Изменить</button>
+  </form>
+
+  <form class="change-email">
+    <div class="logo"></div>
+    <p>Сменить e-mail</p>
+    <input-validate class="input-reg user-email">
+      <input type="email" ng-model="vm.userEmail" />
+    </input-validate>
+    <button type="submit" class="button" ng-click="vm.userChange('email')">Изменить</button>
+  </form>
+
+  <form class="change-password">
+    <div class="logo"></div>
+    <p>Сменить пароль</p>
+    <h3>Введите старый пароль</h3>
+    <input-validate class="input-reg user-number">
+      <input type="password" ng-model="vm.userPasswordOld" placeholder="Старый пароль"/>
+    </input-validate>
+    <h3>Введите новый пароль</h3>
+    <input-validate class="input-reg user-number">
+      <input  id="password" type="password" ng-model="vm.userPasswordNew" placeholder="Новый пароль"/>
+    </input-validate>
+    <h3>Повторите пароль</h3>
+    <input-validate class="input-reg user-number">
+      <input type="password" ng-model="vm.userPassword" data-confirmID="password" placeholder="Подтверждение"/>
+    </input-validate>
+    <button type="submit" class="button" ng-click="vm.userChange('password')">Ок</button>
+  </form>
+
+  <form class="change-phone">
+    <div class="logo"></div>
+    <h3>Сменить телефон</h3>
+    <p>Введите новый номер телефона</p>
+    <input-validate class="input-reg user-number" ng-hide="vm.codeChangeStage">
+      <input type="tel" ng-model="vm.userPhone" placeholder="Номер телефона" />
+    </input-validate>
+    <input-validate class="input-reg user-number" ng-show="vm.codeChangeStage">
+        <input type="text" placeholder="Код подтверждения" ng-model="vm.userCode"/>
+    </input-validate>
+    <button type="submit" class="button" ng-click="vm.userChange('phone')" ng-hide="vm.codeChangeStage">Далее</button>
+    <button type="submit" class="button" ng-click="vm.changePhone('phone')" ng-show="vm.codeChangeStage">Изменить</button>
+  </form>
+
+  <div class="comment error" ng-class="{'true' : vm.errorMark}">Проверьте правильность введенных данных</div>
+</div>

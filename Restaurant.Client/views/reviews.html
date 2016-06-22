@@ -1,0 +1,25 @@
+﻿<div class="reviews-screen" ng-controller="reviewsCtrl as vm">
+  <div class="main-content" autoscroll="vm.scroll">
+    <div class="post" ng-repeat="item in vm.listOfReviews">
+      <h3 class="people-name">{{item.User}}</h3>
+      <p>{{item.Comment}}</p>
+      <div class="post-date">{{item.DateDay}}.{{item.DateMonth}}.{{item.DateYear}}</div>
+    </div>
+  </div>
+  <form name="form" class="push-review" novalidate>
+    <textarea name="review" ng-model="vm.review" id="name-1" cols="30" rows="3" my-maxlength="1000"></textarea>
+    <button class="button" ng-click="vm.sendReview()">Оставить отзыв</button>
+    <div class="max-length" ng-show="vm.maxlength">Максимум — 1000 символов</div>
+  </form>
+  <div class="popup" ng-show="vm.messageSent">
+    <div class="main">
+      <h3>Ваш отзыв отправлен!</h3>
+    </div>
+  </div>
+  <div class="popup" ng-show="vm.noMessage" popup-close-able>
+    <div class="main">
+      <h3>Заполните текстовое поле!</h3>
+      <button class="button" ng-click="vm.noMessage = false;">ОК</button>
+    </div>
+  </div>
+</div>

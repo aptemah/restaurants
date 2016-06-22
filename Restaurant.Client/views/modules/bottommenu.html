@@ -1,0 +1,5 @@
+<div id="bottom-menu" ng-controller="bottomMenuCtrl as vm" ng-hide="vmm.hideBottomMenuValue" class="ng-hide">
+    <a ng-href="#/menu_first/null"><div class="menu-button menu-btn" ng-active-element><span>Меню</span></div></a><!--
+  --><a class="link-actions" href="#/shares"><div class="menu-button shares" ng-active-element><span>Акции</span></div></a><!--
+  --><div ng-click="vm.goToChat()" class="menu-button ch" ng-class="{'disabled' : vmm.userIsNotRegistred}" ng-active-element><span>Чат</span></div>
+</div>

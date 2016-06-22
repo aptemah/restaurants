@@ -1,0 +1,65 @@
+﻿<div ng-controller="promoController">
+    <h1>Реклама ресторана</h1>
+    <table>
+        <tr>
+            <td>Наименование</td>
+            <td>Цена</td>
+            <td>Описание</td>
+            <td>Ссылка</td>
+            <td>Фото</td>
+            <td>VK</td>
+            <td>FB</td>
+            <td>TW</td>
+        </tr>
+        <tr ng-repeat="p in promo.PromoList">
+            <td>{{p.Name}}</td>
+            <td>{{p.Price}}</td>
+            <td>{{p.Description}}</td>
+            <td>{{p.Link}}</td>
+            <td>{{p.Image}}</td>
+            <td>{{p.VK}}</td>
+            <td>{{p.FB}}</td>
+            <td>{{p.TW}}</td>
+            <td>
+                <a href="" ng-click="edit(p)">Редактировать</a>
+                <a href="" ng-click="delete(p)">Удалить</a>
+            </td>
+        </tr>
+    </table>
+    <a href="" ng-click="divPromo()">Добавить</a>
+    <div ng-show="newDivPromo">
+        <form>
+            <div ng-hide="true">{{Action}}</div>
+            <span>
+                <input type="text" ng-model="name" />
+            </span><br />
+            <span>
+                <input type="number" ng-model="price" />
+            </span><br />              
+            <span>
+                <textarea type="text" ng-model="description"></textarea>
+            </span><br />
+            <span>
+                <input type="text" ng-model="link" />
+            </span><br />  
+            <span>
+                <input type="text" ng-model="imageName" ng-hide="true" />
+                {{imageName}}<br />
+                <input type="file" file-model="fileName" />
+            </span><br />
+            <span>
+                <input type="text" ng-model="vk" />
+            </span><br />  
+            <span>
+                <input type="text" ng-model="fb" />
+            </span><br />  
+            <span>
+                <input type="text" ng-model="tw" />
+            </span><br />  
+            <span>
+                <a href="" ng-click="addUpdatePromo()">Сохранить</a>
+                <a href="" ng-click="cancel()">Отменить</a>
+            </span>
+        </form>
+    </div>
+</div>

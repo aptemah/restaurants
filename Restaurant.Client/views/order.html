@@ -1,0 +1,170 @@
+<div class="order-screen" ng-controller="orderCtrl as vm">
+  <h1 class="header no-bg">Корзина</h1>
+  <div class="main-content">
+    <div class="comment" ng-show="vm.ifNoOrder()">У Вас нет товаров в корзине, перейдите в "меню" для добавления заказов или в "мой заказ" для просмотра заказанных товаров</div>
+    <a href="#/menu_first/null" ng-show="vm.ifNoOrder()"><button class="button">Перейти в меню</button></a>
+
+    <div class="items"  ng-init="vm.cartAmount=0">
+
+      <div class="cart-item clear-fix" ng-repeat="x in vm.items">
+        <div class="img-order" style="background-image: url('{{vmMenu.imagePath + x.Image}}')"></div><!--
+        --><div class="order-description">
+            <h3>{{x.Name}}</h3><input type="hidden" data-productId="{{x.Id}}" />
+            <div class="order-price" ng-model="vm.prices[$index]" ng-init="vm.prices[$index]=x.Price">Цена <span>{{x.Price}}</span>руб.</div>
+            <div class="order-weight">Вес: <span>{{x.Weight}}</span></div>
+            <span class="invisible">{{vm.cartAmount[$index] = (vmMenu.quantityRepeat[$index] * x.Price)}}</span>
+        </div>
+        <div class="quantity">
+            <div class="counter minus" ng-click="vmMenu.changeAmount($event, '-', x.Id, vmMenu.quantityRepeat[$index], $index);"></div>
+            <input class="cart-count-number" type="number" ng-model="vmMenu.quantityRepeat[$index]" ng-init="vmMenu.quantityRepeat[$index]=x.Quantity" ng-blur="vmMenu.refreshOrderList($event, x.Id)"/>
+            <div class="counter plus" ng-click="vmMenu.changeAmount($event, '+', x.Id, vmMenu.quantityRepeat[$index], $index);"></div>
+        </div>
+        <button class="delete-from-cart" ng-delete-button></button>
+      </div>
+
+      <div class="order-variant" ng-hide="vm.reordering || vm.ifNoOrder()">
+
+        <div class="order-variant-1 clear-fix">
+          <label for="o1"><input type="radio" id="o1" ng-model="vm.method" value="0"/><span class="box"></span><span class="description">В ресторане</span></label>
+        </div>
+        <div class="order-variant-2 clear-fix">
+
+          <label for="o2"><input type="radio" id="o2" ng-model="vm.method" value="1"/><span class="box"></span><span class="description">С собой</span></label>
+        </div>
+        <div class="order-variant-3 clear-fix">
+
+          <label for="o3"><input type="radio" id="o3" ng-model="vm.method" value="3"/><span class="box"></span><span class="description">Доставка по адресу</span></label>
+        </div>
+      </div>
+
+      <div class="order-time" ng-hide="vm.ifNoOrder() || vm.reordering">
+        <label for="order-1" class="clear-fix">
+          <input id="order-1" type="checkbox" ng-model="vm.timeToTime">
+          <span class="box"></span>
+          <span class="description">Приготовить по времени</span>
+        </label>
+        <div class="input-block"><input type="number" class="hour" ng-model="vm.time.hour" ng-show="vm.timeToTime" ng-init="vm.time.hour=vm.returnHours()" min="00" max="24"><input type="number" class="minutes" ng-model="vm.time.minute" ng-show="vm.timeToTime" min="00" max="60" ng-init="vm.time.minute=30"></div>
+      </div>
+      <div class="clear-fix"></div>
+
+
+
+
+      <h3 class="summ-common" ng-hide="vm.ifNoOrder() || vm.reordering">Общая сумма: <span class="order-summ">{{vm.getCartAmount(vm.cartAmount)}}<span>руб.</span></span></h3>
+      <h3 class="summ-common" ng-hide="vm.ifNoOrder() || !vm.reordering">Сумма дозаказа: <span class="order-summ">{{vm.getCartAmount(vm.cartAmount)}}<span>руб.</span></span></h3>
+      <button class="button no-animate" ng-click="vm.openOrder();" ng-hide="vm.ifNoOrder()" no-animate>Заказать</button>
+      <button class="button no-animate" ng-click="vm.clearOrder()" ng-hide="vm.ifNoOrder()" no-animate>Очистить корзину</button>
+
+      <h1 class="header no-bg" ng-hide="vm.noOpenedOrder()">Заказы</h1>
+
+      <div class="orders-block" ng-repeat="order in vm.orders" ng-init="outerIndex = '00' + $index; vm.amount = 0">
+        <div class="order-status" ng-if="order.ValidPurchase == 1 && !vmMenu.orderHasBeenPaid">Подтвержденный заказ</div>
+        <div class="order-status" ng-if="order.ValidPurchase == 0 && !vmMenu.orderHasBeenPaid">Неподтвержденный заказ</div>
+        <div class="order-status" ng-if="vmMenu.orderHasBeenPaid == true">Оплачено. Ожидается закрытие заказа менеджером</div>
+        <div class="items" ng-repeat="item in order.Products">
+          <input type="hidden" ng-init="currentIndex = outerIndex + $index" ng-model="currentIndex">
+          <div class="item clear-fix">
+            <div class="img-order" style="background-image: url('{{vmMenu.imagePath + item.Image}}')"></div><!--
+       --><div class="order-description">
+            <h3>{{item.Name}}</h3>
+            <div class="order-price">Цена: <span>{{item.Price}}</span>руб.</div>
+            <div class="order-weight">Вес: <span>{{item.Weight}}</span></div>
+          </div>
+            <input type="hidden" ng-bind = "vm.amount[currentIndex] = (vmMenu.ordersQuantityRepeat[currentIndex] * item.Price)">
+            <div class="quantity">
+              <input class="count-number" type="number" ng-model="vmMenu.ordersQuantityRepeat[currentIndex]" ng-init="vmMenu.ordersQuantityRepeat[currentIndex]=item.Quantity"/>
+              <div class="counter plus" ng-click="vm.addToOrders($event, '+', item.ProdId, currentIndex); vm.addToCart($event); vm.getCartList(); vm.scrollTop()" ng-hide="vmMenu.orderHasBeenPaid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="summ-common" ng-hide="vm.noOpenedOrder()">Сумма к оплате: <span class="order-summ">{{vm.getAmount(vm.amount)}}<span>руб.</span></span></h3>
+
+      <div class="comment" ng-show="vmMenu.hasOpenOrder">Ваш заказ в обработке. Дождитесь подтверждения заказа...</div>
+
+      <button class="button" ng-click="vm.askPrice(); vm.scrollToBottom();" ng-hide="vm.noOpenedOrder() || vm.paymantVariantsShow" ng-class="{disabled : vmMenu.hasOpenOrder || vmMenu.orderHasBeenPaid}">
+        <span ng-show="!vmMenu.orderHasBeenPaid">Попросить счет</span>
+        <span ng-show="vmMenu.orderHasBeenPaid">Оплачено</span>
+      </button>
+
+
+      <div class="payment-variantes" ng-show="vm.paymantVariantsShow">
+        <div class="variant clear-fix">
+          <label for="c1">
+            <input type="radio" id="c1" ng-model="vm.method" ng-init="vm.method = 0" value="0" name="payment"/>
+            <span class="box"></span>
+            <span class="description">Наличными</span>
+          </label>
+        </div>
+
+        <div class="variant clear-fix">
+          <label for="c2">
+            <input type="radio" id="c2" ng-model="vm.method" value="1" name="payment"/>
+            <span class="box"></span>
+            <span class="description">Картой</span>
+          </label>
+        </div>
+
+        <div class="variant clear-fix" ng-hide="vm.notRegistredUser">
+          <label for="c3">
+            <input type="radio" id="c3" ng-model="vm.method" value="2" name="payment"/>
+            <span class="box"></span>
+            <span class="description">Бонусами</span>
+          </label>
+        </div>
+        <button class="button" ng-click="vm.askPrice(vm.method)">Оплатить заказ</button>
+      </div>
+
+    </div>
+
+
+    <div class="comment">По любым вопросам звоните: <a class="button phone" href="tel:{{vmm.clubTelephone}}">{{vmm.clubTelephone}}</a></div>
+  </div>
+
+  <div class="popup" ng-show="vm.havePaidButNotClosedOrders" popup-close-able>
+    <div class="main">
+      <h3>У Вас есть оплаченный незакрытый заказ! Дождитесь его закрытия...</h3>
+      <button class="button" ng-click="vm.havePaidButNotClosedOrders = false">ОК</button>
+    </div>
+  </div>
+
+  <div class="popup" ng-show="vm.popupShowQr" popup-close-able >
+    <div class="main">
+      <h3>Ваш заказ принят, покажите, пожалуйста, номер заказа официанту для оформления заказа.</br>Ваш номер заказа: {{vmm.orderCode}}</h3>
+      <button class="button" ng-click="vm.popupShowQr = false">ОК</button>
+    </div>
+  </div>
+
+  <div class="popup" ng-show="vm.popupShowWait" popup-close-able >
+    <div class="main">
+      <h3>Ваш заказ принят. С вами свяжутся для подтверждения</br>Ваш номер заказа: {{vmm.orderCode}}</h3>
+      <button class="button" ng-click="vm.popupShowWait = false">ОК</button>
+    </div>
+  </div>
+
+  <div class="popup" ng-show="vm.popupAuthAsk" popup-close-able >
+    <div class="main">
+      <h3 ng-show="!vm.telephoneShow">Для того чтобы сделать заказ, Вам нужно войти в приложение, или указать номер Вашего телефона</h3>
+      <a href="#/authorization" ng-show="!vm.telephoneShow"><button class="button">Вход</button></a>
+      <a href="#/registration" ng-show="!vm.telephoneShow"><button class="button">Регистрация</button></a>
+      <div ng-show="!vm.telephoneShow"><button class="button" ng-click="vm.telephoneShow = true">Указать телефон</button></div>
+
+      <h3 ng-hide="!vm.telephoneShow">Укажите Ваш номер телефона для того чтобы мы могли связаться с Вами</h3>
+      <input-validate class="input-reg user-name" ng-hide="!vm.telephoneShow">
+          <input id="phone" type="tel" placeholder="Телефон" ng-model="vm.phone"/>
+      </input-validate>
+      <button class="button" ng-hide="!vm.telephoneShow" ng-click="vm.openOrderWithTelephon();">Осуществить заказ</button>
+      <h3 ng-show="vm.telephoneShow && vm.alreadyRegistred">Пользователь с таким номером телефона уже зарегистрирован.</h3>
+      <a ng-href="#/authorization"><button class="button" ng-show="vm.telephoneShow && vm.alreadyRegistred">Войти в приложение</button></a>
+    </div>
+  </div>
+
+  <div class="popup" ng-show="vm.popupLowBonuses">
+    <div class="main">
+      <h3>Мало бонусов</h3>
+      <button class="button" ng-click="vm.popupLowBonuses = false">ОК</button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,12 @@
+<menu id="menu" ng-controller="menuCtrl as vm" ng-hide="hideMenuValue" class="ng-hide" ng-model="clubName" ng-class="{true: 'next', false: ''}[backMenuValue]">
+  <div class="menu button" ng-hide="vmm.hideBurgerValue"></div>
+  <div class="back button" ng-click="goBack()"></div>
+  <a class="home" ng-class="{'return' : !vipadaikaBack, 'more' : vipadaika}">
+    <span class="club-name" ng-click="goToFromTopMenuClick()">{{vmm.clubName}}<div class="arrow"></div></span>
+  </a>
+<!--   <a class="home" ng-show="!vipadaika" ng-class="{'return' : !vipadaikaBack}">
+  <span class="club-name" ng-click="returnToPreviousScreen()">{{vmm.clubName}}<div class="arrow"></div></span>
+</a> -->
+  <a href="#/bonuses"><div class="bonus" ng-hide="!vmm.bonusesShow || vmm.userIsNotRegistred">{{vmm.bonusOverTenThousand()}}</div></a>
+  <a ng-href="#/order" ng-show="cart"><div class="cart"><div class="badge" ng-class="{'active' : vmMenu.badgeShow}" ng-show="vmMenu.badgeShow">{{vmMenu.orderLength}}</div></div></a>
+</menu>

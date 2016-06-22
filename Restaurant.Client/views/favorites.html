@@ -1,0 +1,22 @@
+<div class="menu-screen" ng-controller="favoritesCtrl as vm">
+  <h1 class="header">Избранные блюда</h1>
+  <div class="comment" ng-show="vm.noSessionId">Чтобы добавлять блюда в избранное, войдите в приложение или зарегистрируйтесь!</div>
+  <a href="#/authorization" ng-show="vm.noSessionId"><button class="button button_center">Вход</button></a>
+  <a href="#/registration" ng-show="vm.noSessionId"><button class="button button_center">Регистрация</button></a>
+  <div class="comment" ng-show="vm.noFavorites">Список пуст. Добавьте вначале сюда блюда из меню</div>
+  <a href="#/menu_first/null" ng-show="vm.noFavorites"><button class="button button_center">Перейти в меню</button></a>
+  <div class="product" ng-repeat="item in vm.items" ng-click="go('/menu_last/' + item.Id)">
+    <div class="image" style="background-image: url('{{vmMenu.imagePath + item.Image}}')"></div>
+    <div class="info">
+        <div class="name">{{item.Name}}</div>
+        <div class="price">Цена: {{item.Price}}руб.</div>
+        <div class="weight">{{item.Weight}}</div>
+        <div class="order">
+            <span>кол</span>
+            <input type="number" ng-model="quantityRepeat" ng-init="quantityRepeat=1" ng-click="vmm.stopPropagation($event)" min="1"/>
+            <button class="button" ng-click="vmMenu.addToOrderList($event, item.Id, quantityRepeat);vm.bounce();">Добавить в корзину</button>
+        </div>
+        <div class="to-favorites out-of-favorites" ng-favorites="{{item.Id}}" ng-click="vm.removeFromFavorites($event, item.Id)"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="registration-screen" ng-controller="registrationCtrl as vm">
+    <h1 class="header">Регистрация</h1>
+    <div class="tabs"><div class="tab active">Данные</div><div class="tab">Подтверждение</div></div>
+    <form>
+        <h2 class="comment">Введите свои данные, чтобы получить возможность пользоваться приложением</h2>
+        <input-validate class="input-reg user-name">
+            <input id="club-name" type="text" placeholder="Имя" ng-model="vm.name"/>
+        </input-validate>
+        <input-validate class="input-reg user-number">
+            <input id="club-card" type="tel" placeholder="Номер телефона" ng-model="vm.phone" ng-focus="vm.phone = vm.phoneNumberLayout" ng-blur="vm.phoneNumberLayout = vm.phone"/>
+        </input-validate>
+        <input-validate class="input-reg user-email">
+            <input id="phone-number" type="email" placeholder="E-mail" ng-model="vm.email"/>
+        </input-validate>
+        <input-validate class="input-reg password">
+            <input id="password" type="password" placeholder="Пароль" ng-model="vm.password"/>
+        </input-validate>
+        <input-validate class="input-reg password-confirm">
+            <input id="password-confirm" data-confirmID="password" type="password" placeholder="Подтвердите пароль" ng-model="vm.passwordConfirm"/>
+        </input-validate>
+        <div class="comment error" ng-bind="vm.errorMessage" ng-class="{'true' : vm.errorMark}">Проверьте правильность введенных данных</div>
+        <button id="submit-button" type="submit" class="button button_transparent button_wide" ng-click="vm.validateFormsForced(); vm.userRegistration()">Далее</button>
+    </form>
+</div>

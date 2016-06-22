@@ -1,0 +1,13 @@
+<div class="club-select-screen" ng-controller="clubSelectCtrl as vm">
+  <h1 class="header no-bg">Выбор заведения</h1>
+  <div class="map" id="map"></div>
+  <div class="club" ng-repeat="x in vm.clubs" ng-click="vm.clubClick(x.PointId, x.GlobalPointId, x.Name); vm.sendSessionId(x.PointId); vm.functionForChat(x.PointId);" ng-class="x.Name == vmm.clubName ? 'current' : 'NOTcurrent'">
+    <div class="title"><span class="net">{{x.Network}}</span> «<span class="name">{{x.Name}}</span>»</div>
+    <div class="distance-block" ng-if="vm.showDistanse">
+      <span class="distance">{{x.distance}} км</span>
+    </div>
+    <div class="address">
+      <span>{{x.Address}}</span>
+    </div>
+  </div>
+</div>

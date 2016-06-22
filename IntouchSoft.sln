@@ -1,0 +1,165 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{035F27D8-1280-4144-A9D6-0868FD01F0E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{27CDA97B-F3C9-4941-B791-D64DDF9F0A4A}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social.WebService", "IntouchClub\Social.WebService\Social.WebService.csproj", "{163F28E0-1188-451C-A963-8D5A64903132}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{CFE9B16F-8F69-401C-80A2-2637F22B0B53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content", "Content\Content.csproj", "{5697F3EC-481F-433E-89E3-68C74FDDA4C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant.WebService", "Restaurant.WebService\Restaurant.WebService.csproj", "{D9C63853-C55B-44BC-B706-A2821E2658F3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9} = {30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Restaurant.Client", "http://localhost:5228", "{268A060E-13E1-453E-B876-F36620CA7B87}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_5223"
+		Debug.AspNetCompiler.PhysicalPath = "Restaurant.Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5223\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_5223"
+		Release.AspNetCompiler.PhysicalPath = "Restaurant.Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5223\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "Restaurant.Client\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RestaurantAdmin.Client", "http://localhost:12643", "{4CFB19D9-5BEF-4E38-958E-DCBB3B876949}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_12645"
+		Debug.AspNetCompiler.PhysicalPath = "RestaurantAdmin.Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_12645\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_12645"
+		Release.AspNetCompiler.PhysicalPath = "RestaurantAdmin.Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_12645\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "RestaurantAdmin.Client\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RestaurantAdmin", "RestaurantAdmin\", "{B686377D-92C0-46A5-B75A-AECE19E36164}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_65490"
+		Debug.AspNetCompiler.PhysicalPath = "RestaurantAdmin\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_65490\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_65490"
+		Release.AspNetCompiler.PhysicalPath = "RestaurantAdmin\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_65490\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "65490"
+		SlnRelativePath = "RestaurantAdmin\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		andrey|Any CPU = andrey|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.andrey|Any CPU.ActiveCfg = andrey|Any CPU
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.andrey|Any CPU.Build.0 = andrey|Any CPU
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.andrey|Any CPU.Deploy.0 = andrey|Any CPU
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{163F28E0-1188-451C-A963-8D5A64903132}.andrey|Any CPU.ActiveCfg = Release|Any CPU
+		{163F28E0-1188-451C-A963-8D5A64903132}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{163F28E0-1188-451C-A963-8D5A64903132}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{163F28E0-1188-451C-A963-8D5A64903132}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{163F28E0-1188-451C-A963-8D5A64903132}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}.andrey|Any CPU.ActiveCfg = Release|Any CPU
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}.andrey|Any CPU.Build.0 = Release|Any CPU
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6}.andrey|Any CPU.ActiveCfg = andrey|Any CPU
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6}.andrey|Any CPU.Build.0 = andrey|Any CPU
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9C63853-C55B-44BC-B706-A2821E2658F3}.andrey|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C63853-C55B-44BC-B706-A2821E2658F3}.andrey|Any CPU.Build.0 = Release|Any CPU
+		{D9C63853-C55B-44BC-B706-A2821E2658F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9C63853-C55B-44BC-B706-A2821E2658F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9C63853-C55B-44BC-B706-A2821E2658F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C63853-C55B-44BC-B706-A2821E2658F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268A060E-13E1-453E-B876-F36620CA7B87}.andrey|Any CPU.ActiveCfg = Debug|Any CPU
+		{268A060E-13E1-453E-B876-F36620CA7B87}.andrey|Any CPU.Build.0 = Debug|Any CPU
+		{268A060E-13E1-453E-B876-F36620CA7B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{268A060E-13E1-453E-B876-F36620CA7B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{268A060E-13E1-453E-B876-F36620CA7B87}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{268A060E-13E1-453E-B876-F36620CA7B87}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{4CFB19D9-5BEF-4E38-958E-DCBB3B876949}.andrey|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CFB19D9-5BEF-4E38-958E-DCBB3B876949}.andrey|Any CPU.Build.0 = Debug|Any CPU
+		{4CFB19D9-5BEF-4E38-958E-DCBB3B876949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CFB19D9-5BEF-4E38-958E-DCBB3B876949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CFB19D9-5BEF-4E38-958E-DCBB3B876949}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CFB19D9-5BEF-4E38-958E-DCBB3B876949}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{B686377D-92C0-46A5-B75A-AECE19E36164}.andrey|Any CPU.ActiveCfg = Debug|Any CPU
+		{B686377D-92C0-46A5-B75A-AECE19E36164}.andrey|Any CPU.Build.0 = Debug|Any CPU
+		{B686377D-92C0-46A5-B75A-AECE19E36164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B686377D-92C0-46A5-B75A-AECE19E36164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B686377D-92C0-46A5-B75A-AECE19E36164}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{B686377D-92C0-46A5-B75A-AECE19E36164}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0} = {CFE9B16F-8F69-401C-80A2-2637F22B0B53}
+		{163F28E0-1188-451C-A963-8D5A64903132} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9} = {CFE9B16F-8F69-401C-80A2-2637F22B0B53}
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6} = {CFE9B16F-8F69-401C-80A2-2637F22B0B53}
+		{D9C63853-C55B-44BC-B706-A2821E2658F3} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+		{268A060E-13E1-453E-B876-F36620CA7B87} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+		{4CFB19D9-5BEF-4E38-958E-DCBB3B876949} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+		{B686377D-92C0-46A5-B75A-AECE19E36164} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,15 @@
+<div class="my-profile-view-screen" ng-controller="profileCtrl as vm">
+  <h1 class="header">Редактирование профиля</h1>
+  <form>
+    <label class="user-photo" for="file" style="background-image: url('{{vm.userPhoto}}')">
+        <input id="file" type="file" onchange="angular.element(this).scope().vm.changePhoto()" />
+    </label>
+    <div class="field name " ng-click="vm.popupCall('name')">
+      <span>{{vm.userName}}</span>
+    </div>
+    <div class="field email" ng-click="vm.popupCall('email')"><span>{{vm.userEmail}}</span></div>
+    <button class="button button_block" type="button" ng-click="vm.popupCall('password')"><span>Сменить пароль</span></button>
+    <button class="button button_block" type="button" ng-click="vm.popupCall('phone')"><span>Сменить телефон</span></button>
+  </form>
+  <popup-block/>
+</div>

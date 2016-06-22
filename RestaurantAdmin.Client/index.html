@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta charset="utf-8">
+    <title>Войдите в свой аккаунт</title>
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
+</head>
+<body>
+    <div id="admin-login">
+        <span id="errorMessage"></span><br/>
+        <span>Логин:</span>
+        <input type="text" class="login"><br/>
+        <span>Пароль:</span>
+        <input type="password" class="password"><br/>
+        <button id="buttonOk">Войти</button>
+    </div>
+    <div id="admin-wrap" style="display: none">
+        <aside></aside>
+        <div>
+            <iframe src="http://rest.ua/" width="375px" height="648px"></iframe>
+        </div>
+    </div>
+    <script type="text/javascript">
+      if(localStorage.getItem('sessionId') && localStorage.getItem('sessionType')) {
+        $("#admin-login").hide();
+        $("#admin-wrap").fadeIn();
+      };
+      $(document).on("click", "#buttonOk", function(){
+          console.log("click");
+          var phone    = $(".login"   ).val();
+          var password = $(".password").val();
+          $.ajax({
+            url: "http://stas.intouchclub.ru/RestWeb/User/Login",
+            data : {"phone" : phone, "password" : password},
+            success: function(result) {
+              if (result.status == 1) {
+                  localStorage.sessionId = result.Session;
+                  localStorage.sessionType = true;
+                  $("#admin-login").hide();
+                  $("#admin-wrap").fadeIn();
+              } else {
+                  alert("ты кто такой? давай досвидание!")
+              }
+            }
+          })
+      })
+    setTimeout(function(){
+      $(function(){
+        var popup = null;
+        var sendObject = {
+          title: 'Тестовое сообщение',
+          value: 5000
+        };
+          var iframe = $('#iframe');
+          $("iframe")[0].contentWindow.postMessage(sendObject, document.location);
+      });
+    },3000)
+    window.onload = function() {
+
+    };
+
+//function ShowBanners(club) {
+//    $.ajax({
+//        url: server + "/Karaoke/GetBanner",
+//        async: false,
+//        data: { ClubId: club },
+//        success: function (result) {
+//            var newsCount = result.Count();
+//            $(".touchslider-viewport").append($("<div>"));
+//
+//            result.ForEach(function () {
+//
+//                i++;
+//
+//                $(".touchslider-viewport>div")
+//                               .append($("<div>", { class: "touchslider-item", newsid: this.Id })
+//                                   .append($("<span>", { class: "about-2-image" })
+//                                       .append($("<img>", { src: "http://stas.intouchclub.ru///intouchsoft/Content/WIW/banners/" + this.Photo })))
+//                          );
+//                $(".nav").append($("<div>", { class: "touchslider-nav-item" }));
+//            });
+//
+//            $(".nav>div:first-child").addClass("touchslider-nav-item-current");
+//            sliderLaunch();
+//
+//        }
+//    });
+//}
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<div class="order-screen re-ordering" ng-controller="myOrdersCtrl as vm">
+  <h1 class="header no-bg">Мой заказ</h1>
+  <div class="main-content">
+    <div class="comment" ng-show="vm.noOpenedOrder && !vmMenu.badgeShow">У Вас нет открытых заказов. Вначале добавьте их из меню</div>
+    <div class="comment" ng-show="vm.noOpenedOrder && vmMenu.badgeShow">У Вас нет открытых заказов. Перейдите в корзину для заказа, или в меню, чтобы добавить блюда в корзину</div>
+    <div class="divider" ng-class="{first : $first}" ng-repeat="order in vm.orders" ng-init="outerIndex = $index">
+      <div class="items" ng-repeat="item in order.Products">
+        <div class="item clear-fix">
+          <input type="hidden" ng-init="currentIndex=outerIndex * order.Products.length + $index">
+          <div class="img-order" style="background-image: url('{{vmMenu.imagePath + item.Image}}')"></div><!--
+       --><div class="order-description">
+            <h3>{{item.Name}}</h3>
+            <div class="order-price">Цена: <span>{{item.Price}}</span>руб.</div>
+            <div class="order-weight">Вес: <span>{{item.Weight}}</span></div>
+          </div>
+          <input type="hidden" ng-bind = "vm.amount[currentIndex] = (vmMenu.quantityRepeat[currentIndex] * item.Price)">
+          <div class="quantity">
+            <input class="count-number" type="number" ng-model="vmMenu.quantityRepeat[currentIndex]" ng-init="vmMenu.quantityRepeat[currentIndex]=item.Quantity"/>
+            <div class="counter plus" ng-click="vmMenu.addToOrders($event, '+', item.ProdId, currentIndex); vm.addToCart($event)" ng-hide="vmMenu.orderHasBeenPaid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h3 class="summ-common" ng-hide="vm.noOpenedOrder || vm.notRegistredUser">Бонусы: <span class="order-summ">{{vmm.bonuses}}<span>руб.</span></span></h3>
+    <h3 class="summ-common" ng-hide="vm.noOpenedOrder">Сумма к оплате: <span class="order-summ">{{vm.getAmount(vm.amount)}}<span>руб.</span></span></h3>
+    <div class="clear-fix"></div>
+    <a href="#/menu_first/null" ng-hide="vmMenu.badgeShow || vm.noOpenedOrder || vmMenu.orderHasBeenPaid"><button class="button">Дозаказать</button></a>
+    <a href="#/order" ng-hide="!vmMenu.badgeShow || vm.noOpenedOrder || vmMenu.orderHasBeenPaid"><button class="button">Дозаказать</button></a>
+    <a href="#/menu_first/null" ng-show="vm.noOpenedOrder"><button class="button">Перейти в меню</button></a>
+    <a href="#/order" ng-show="vm.noOpenedOrder && vmMenu.badgeShow"><button class="button">Перейти в корзину</button></a>
+    <div class="comment" ng-show="vmMenu.hasOpenOrder">Ваш заказ в обработке. Дождитесь подтверждения заказа...</div>
+    <button class="button" ng-click="vm.askPrice(); vm.scrollToBottom();" ng-hide="vm.noOpenedOrder || vm.paymantVariantsShow" ng-class="{disabled : vmMenu.hasOpenOrder || vmMenu.orderHasBeenPaid}"><span ng-show="!vmMenu.orderHasBeenPaid">Попросить счет</span><span ng-show="vmMenu.orderHasBeenPaid">Оплачено</span></button>
+    <div class="payment-variantes" ng-show="vm.paymantVariantsShow">
+      <div class="variant clear-fix">
+          <label for="c1">
+            <input type="radio" id="c1" ng-model="vm.method" ng-init="vm.method = 0" value="0"/>
+            <span class="box"></span>
+            <span class="description">Наличными</span>
+          </label>
+      </div>
+      <div class="variant clear-fix">
+          <label for="c2">
+            <input type="radio" id="c2" ng-model="vm.method" value="1"/>
+            <span class="box"></span>
+            <span class="description">Картой</span>
+          </label>
+      </div>
+      <div class="variant clear-fix" ng-hide="vm.notRegistredUser">
+          <label for="c3">
+            <input type="radio" id="c3" ng-model="vm.method" value="2"/>
+            <span class="box"></span>
+            <span class="description">Бонусами</span>
+          </label>
+      </div>
+      <button class="button" ng-click="vm.askPrice(vm.method)">Оплатить заказ</button>
+    </div>
+    <div class="comment">По любым вопросам звоните: <a class="button phone" href="tel:{{vmm.clubTelephone}}">{{vmm.clubTelephone}}</a></div>
+  </div>
+  <div class="popup" ng-show="vm.popupBonusesShow">
+    <div class="main">
+      <img ng-src="img/bonus-piggy-bank.png">
+      <h3>Ваш заказ оплачен! <span ng-show="!vm.notRegistredUser">Начислено <span class="bunus-number">{{vm.bonusAmount}}</span> бонусов. Посмотреть количество бонусов можно здесь:</span></h3>
+      <button class="button" ng-click="vm.popupBonusesShow = false">ОК</button>
+      <a ng-href="#/bonuses" ng-hide="vm.notRegistredUser"><button class="button">Мои бонусы</button></a>
+    </div>
+  </div>
+  <div class="popup" ng-show="vm.popupCashPayment" popup-close-able>
+    <div class="main">
+      <h3>Ожидайте, к Вам подойдет официант!</h3>
+      <button class="button block" ng-click="vm.popupCashPayment = false">ОК</button>
+    </div>
+  </div>
+  <div class="popup" ng-show="vm.popupBonusPaymentSuccess">
+    <div class="main">
+      <h3>Оплата бонусами осуществлена успешно!</br>Посмотреть остаток бонусов можно здесь:</h3>
+      <a ng-href="#/bonuses"><button class="button">Мои бонусы</button></a>
+      <button class="button" ng-click="vm.popupBonusPaymentSuccess = false">ОК</button>
+    </div>
+  </div>
+  <div class="popup" ng-show="vm.popupLowBonuses">
+    <div class="main">
+      <h3>Мало бонусов</h3>
+      <button class="button" ng-click="vm.popupLowBonuses = false">ОК</button>
+    </div>
+  </div>
+</div>

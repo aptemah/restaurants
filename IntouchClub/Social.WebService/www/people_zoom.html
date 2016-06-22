@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
+  <meta charset="utf-8">
+  <title>Общение</title>
+  <link href="css/main_chat.css" rel="stylesheet">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <script src="/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="/Scripts/linq.js"></script>
+    <script src="/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script type="text/javascript" src="/www/js/people_page.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <div id="people-zoom">
+      <menu id="menu">
+        <div class="logo"></div>
+        <a href="club_page.html"><div class="home">Сеть фитнес-клубов X-fit</div></a>
+        <div class="menu"></div>
+      </menu>
+      <!--<h1>Иванова Т.П.</h1>
+      <div class="people-zoom"><img src="http://lorempixel.com/300/300/people" alt=""></div>
+      <button type="button">Начать общение<img src="http://lorempixel.com/20/20/abstract"></button>-->
+    </div>
+    <!--<div id="people-zoom-popup">
+      <img src="http://lorempixel.com/20/20/abstract">
+      <h1>Запрос на общение отправлен</h1>
+    </div>-->
+  </div>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+      function popUp () {
+        $("#people-zoom-popup").show();
+      }
+    </script>
+</body>
+</html>

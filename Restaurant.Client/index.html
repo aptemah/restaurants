@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html ng-app="restaurantApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <title>COFFEE LIFE</title>
+  <script type="text/javascript" src = "js/vendor/angular.min.js"></script>
+  <script type="text/javascript" src = "js/vendor/angular-route.min.js"></script>
+  <script type="text/javascript" src = "js/vendor/angular-animate.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
+
+  <script type="text/javascript" src = "js/vendor/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src = "js/vendor/jquery.touchslider.min.js"></script>
+  <script type="text/javascript" src = "js/vendor/hammer.js"></script>
+  <script src="http://stas.intouchclub.ru/SocRest/Scripts/jquery.signalR-2.2.0.js"></script>
+  <script src="http://stas.intouchclub.ru/SocRest/signalr/hubs "></script>
+  <script src = "js/scripts.min.js"></script>
+
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+  <script src="https://widget.cloudpayments.ru/bundles/checkout"></script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="page" ng-view></div>
+    <top-menu></top-menu>
+    <side-menu></side-menu>
+    <bottom-menu></bottom-menu>
+    <div class="shade"></div>
+  </div>
+</body>
+</html>

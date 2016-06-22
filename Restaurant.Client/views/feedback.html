@@ -1,0 +1,25 @@
+﻿<div class="feedback-screen" ng-controller="feedbackCtrl as vm">
+  <h1 class="header">Обратная связь</h1>
+  <div class="main-content">
+    <form>
+      <input type="tel" placeholder="Введите номер" class="tell" ng-model="vm.userPhone">
+      <input type="email" placeholder="Адрес Email" ng-model="vm.userEmail">
+      <textarea name="name" id="ara" cols="10" rows="4" placeholder="Текст вашего сообщения" ng-model="vm.comment"></textarea>
+      <button class="button" ng-click="vm.sendFeedback()">Отправить</button>
+      <p>Телефон клуба:</p>
+      <a href="tel:{{vmm.clubTelephone}}"><button class="button phone" type="button">{{vmm.clubTelephone}}</button></a>
+    </form>
+  </div>
+  <div class="popup" ng-show="vm.noMessage" popup-close-able>
+    <div class="main">
+       <h3>Заполните, пожалуйста, все поля!</h3>
+       <button class="button" ng-click="vm.noMessage = false">ОК</button>
+    </div>
+  </div>
+  <div class="popup" ng-show="vm.messageSent" popup-close-able>
+    <div class="main">
+       <h3>Ваше сообщение отправлено!</h3>
+       <button class="button" ng-click="vm.messageSent = false">ОК</button>
+    </div>
+  </div>
+</div>

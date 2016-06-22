@@ -1,0 +1,56 @@
+﻿<div ng-controller="restaurantController">
+    <h1>Ресторан</h1>
+    <table>
+        <tr>
+            <td>Наименование</td>
+            <td><input type="text" ng-model="restaurant.Restaurant.Name" /></td>
+        </tr>
+        <tr>
+            <td>Телефон</td>
+            <td><input type="text" ng-model="restaurant.Restaurant.Phone" /></td>
+        </tr>
+        <tr>
+            <td>Кухня</td>
+            <td><input type="text" ng-model="restaurant.Restaurant.Kitchen" /></td>
+        </tr>
+        <tr>
+            <td>Адрес</td>
+            <td><input type="text" ng-model="restaurant.Restaurant.Address" /></td>
+        </tr>
+        <tr>
+            <td>Лого</td>
+            <td><input type="text" ng-model="restaurant.Restaurant.Logo" ng-hide="true"/>
+            {{restaurant.Restaurant.Logo}}
+            <input type="file" file-model="logoFile" /></td>
+        </tr>
+        <tr>
+            <td>Почта</td>
+            <td><input type="text" ng-model="restaurant.Restaurant.Email" /></td>
+        </tr>
+        <tr>
+            <td>Описание</td>
+            <td><textarea type="text" ng-model="restaurant.Restaurant.Description"></textarea></td>
+        </tr>
+        <tr>
+            <td>Средние цены</td>
+            <td><textarea type="text" ng-model="restaurant.Restaurant.Price"></textarea></td>
+        </tr>
+        <tr>
+            <td>Время открытия</td>
+            <td><textarea type="text" ng-model="restaurant.Restaurant.Time"></textarea></td>
+        </tr>
+        <tr>
+            <td>Скайп</td>
+            <td><input type="text" ng-model="restaurant.Restaurant.Skype" /></td>
+        </tr>
+        <tr>
+            <td>Почта для фидбека</td>
+            <td><input type="text" ng-model="restaurant.Restaurant.EmailFeedback" /></td>
+        </tr>
+        <tr>
+            <td>Почта для бронирование</td>
+            <td><input type="text" ng-model="restaurant.Restaurant.EmailReservation" /></td>
+        </tr>
+        <tr><td><a href="" ng-click="save(restaurant.Restaurant)">Сохранить</a></td></tr>
+    </table>
+</div>

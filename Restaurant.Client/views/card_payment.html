@@ -1,0 +1,57 @@
+<div class="card-screen" ng-controller="cardCtrl as vm">
+  <h1 class="header">Оплата картой</h1>
+  <div class="card-pop-up">
+    <div class="logo"></div>
+    <h2>Оплатить банковской картой</h2>
+    <h2>Cумма к оплате</h2>
+    <div class="summ"><span>{{vm.orderAmount}}</span>руб.</div>
+    <div class="block-data">
+      <p>Номер банковской карты</p>
+      <div class="block-input-1 clear-fix">
+        <input type="tel" maxlength="4" input-jump-next tabindex="1" placeholder="XXXX">
+        <input type="tel" maxlength="4" input-jump-next tabindex="1" placeholder="XXXX">
+        <input type="tel" maxlength="4" input-jump-next tabindex="1" placeholder="XXXX">
+        <input type="tel" maxlength="4" input-jump-next tabindex="1" placeholder="XXXX">
+      </div>
+      <div class="info-block">
+        <span class="end-date">Дата окончания действия карты</span>
+        <span class="cw">CW код</span>
+      </div>
+      <div class="block-input-2 clear-fix">
+        <input type="tel" maxlength="2" placeholder="XX">
+        <input type="tel" maxlength="2" class="" placeholder="XX">
+        <input type="tel" maxlength="4" class="float-right" placeholder="XXX">
+      </div>
+    </div>
+    <div class="save-card" ng-hide="vmm.userIsNotRegistred">
+      <label for="input-save">
+        <input type="checkbox" id="input-save">
+        <span class="box"></span>
+        <span class="save">Сохранить карту</span>
+      </label>
+    </div>
+    <div class="block-button">
+      <button class="button no-fill">Отмена</button>
+      <button ng-click="vm.paymentSuccess()" class="button float-right">Оплатить</button>
+    </div>
+  </div>
+  <div class="popup" ng-show="vm.popupBonusesShow">
+    <div class="main">
+      <h3>Ваш заказ оплачен!</h3>
+      <a ng-href="{{bonusCardUrl}}/#/start?userId={{vmm.userId}}&pointId={{vmm.globalPoint}}&reg=0" ng-hide="vm.notRegistredUser"><button class="button">Мои бонусы</button></a>
+      <a ng-href="#/order"><button class="button">Мой заказ</button></a>
+    </div>
+  </div>
+  <div class="popup-confirmed" ng-show="vm.popupYourPassword">
+    <div class="main">
+      <div class="logo"></div>
+      <p>Введите пароль для подтверждения платежа</p>
+      <input type="text" placeholder="Введите пароль">
+      <a href="#"><p class="forgot"1>Забыли пароль</p></a>
+      <div class="input-block">
+        <button class="button">Оплатить</button>
+        <button class="button">Отмена</button>
+      </div>
+    </div>
+  </div>
+</div>

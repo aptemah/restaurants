@@ -1,0 +1,10 @@
+<div class="menu-screen" ng-controller="menuFirstCtrl as vm">
+  <h1 class="header">Меню {{vm.parentBlock}}</h1>
+  <a ng-href="#/favorites" ng-show="!vm.itemsNext">
+    <button class="button button_block" type="button" ng-hide="vmm.userIsNotRegistred"><img ng-src="img/favorites.png" alt="">Избранное</button>
+  </a>
+  <a ng-href="#/menu_next/{{x.Id}}" ng-repeat="x in vm.items">
+    <button class="button button_block" type="button"><img ng-src="{{vmMenu.imagePath + x.Image}}" alt="">{{x.Name}}</button>
+  </a>
+  <a ng-href="#/menu_next/{{x.Id}}" ng-repeat="x in vm.itemsNext"><button class="button button_block" type="button"><img ng-src="{{vmMenu.imagePath + x.Image}}" alt="">{{x.Name}}</button></a>
+</div>

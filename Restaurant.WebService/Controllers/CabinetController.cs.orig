@@ -1,0 +1,244 @@
+﻿using Intouch.Core;
+using System;
+using System.Data.Entity;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Web.Mvc;
+using System.Net.Mail;
+using System.Net;
+
+namespace Intouch.Restaurant.Controllers
+{
+    public class CabinetController : BaseController
+    {
+        public JsonResult BonusTransfer(Guid sessionId, int targetId, int mount)
+        {
+            var session = db.RestAppSessions.SingleOrDefault(s => s.Id == sessionId);
+            if (session == null) return Json(false, JsonRequestBehavior.AllowGet);
+            var user = session.RestAppUser;
+
+            var userMinus = BonusOperation(mount, user.Id, Operation.Transfer, PlusMinus.Minus);
+            var targetPlus = BonusOperation(mount, targetId, Operation.Transfer, PlusMinus.Plus);
+            if (userMinus && targetPlus)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetBonusHistory(Guid sessionId)
+        {
+            var session = db.RestAppSessions.SingleOrDefault(s => s.Id == sessionId);
+            if (session == null) return Json(false, JsonRequestBehavior.AllowGet);
+            var user = session.RestAppUser;
+
+            var bonusHistory = db.RestBonusHistorys.Where(b => b.RestAppUser.Id == user.Id).Select(s => new
+            {
+                Mount = s.Mount,
+                Operation = s.Operation,
+                PlusMinus = s.PlusMinus,
+                CurrentBonus = s.CurrentBonus,
+                DateYear = s.Date.Year,
+                DateMonth = s.Date.Month,
+                DateDay = s.Date.Day,
+                DateHour = s.Date.Hour,
+                DateMin = s.Date.Minute,
+                Date = s.Date
+            }).OrderBy(o => o.Date);
+            return Json(bonusHistory, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetOrderHistory(Guid sessionId)
+        {
+            var session = db.RestAppSessions.SingleOrDefault(s => s.Id == sessionId);
+            if (session == null) return Json(false, JsonRequestBehavior.AllowGet);
+            var user = session.RestAppUser;
+
+            var orderHistory = db.RestOrders.Where(o => o.RestAppUser.Id == user.Id && o.RestOrderParts.Any(op=> op.ValidPurchase == ValidPurchase.Confirmed)).Select(s => new {
+                Id = s.Id,
+                DateCreateYear = s.DateCreate.Year,
+                DateCreateMonth = s.DateCreate.Month,
+                DateCreateDay = s.DateCreate.Day,
+                DateCreateHour = s.DateCreate.Hour,
+                DateCreateMin = s.DateCreate.Minute,
+                OrderDate = s.DateCreate,
+                OrderSum = s.RestOrderParts.Where(o => o.RestOrder.Id == s.Id & o.ValidPurchase == ValidPurchase.Confirmed).SelectMany(sm => sm.RestOrderProducts).Select(sl => new
+                {
+                    Price = sl.Price * sl.Quantity
+                }).Sum(sm => sm.Price),
+                Bonus = db.RestBonusHistorys.SingleOrDefault(b => b.Date == s.DateClose).Mount
+            }).OrderBy(o => o.OrderDate);
+            return Json(orderHistory, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetUserInfo(Guid sessionId)
+        {
+            var session = db.RestAppSessions.SingleOrDefault(s => s.Id == sessionId);
+            if (session == null) return Json(false, JsonRequestBehavior.AllowGet);
+            var user = db.RestAppUsers.Where(u => u.Id == session.RestAppUser.Id).Select(s => new {
+                Id = s.Id,
+                Name = s.Name,
+                Phone = s.Phone,
+                Email = s.Email,
+                Age = s.AgeUser,
+                CheckUser = s.CheckUser,
+                Sex = s.Sex,
+                RegistrDate = s.RegistrationDate,
+                Photo = s.Photo
+            });
+            return Json(user, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult NameEdit(Guid sessionId, string name)
+        {
+            var session = db.RestAppSessions.SingleOrDefault(s => s.Id == sessionId);
+            if (session == null) return Json(false, JsonRequestBehavior.AllowGet);
+            var user = session.RestAppUser;
+            user.Name = name;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult EmailEdit(Guid sessionId, string email)
+        {
+            var session = db.RestAppSessions.SingleOrDefault(s => s.Id == sessionId);
+            if (session == null) return Json(false, JsonRequestBehavior.AllowGet);
+            var user = session.RestAppUser;
+            user.Email = email;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult AddUserPhoto()
+        {
+            var image = Request.Files["file"];
+            if (image != null && image.ContentLength > 0 && !string.IsNullOrEmpty(image.FileName))
+            {                
+                var fileName = Guid.NewGuid();
+                var filePath = string.Format("{0}\\{1}", ImageServices.ContentPath("photo"), fileName.ToString() + ".jpg");
+                image.SaveAs(filePath);
+                return Json(fileName.ToString() + ".jpg", JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+        public JsonResult PhotoEdit(Guid sessionId, string photo)
+        {
+            var session = db.RestAppSessions.SingleOrDefault(s => s.Id == sessionId);
+            if (session == null) return Json(false, JsonRequestBehavior.AllowGet);
+            var user = session.RestAppUser;
+            user.Photo = photo;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ChangePassword(Guid sessionId, string oldPassword, string newPassword)
+        {
+            var session = db.RestAppSessions.SingleOrDefault(s => s.Id == sessionId);
+            if (session == null) return Json(false, JsonRequestBehavior.AllowGet);
+            var user = session.RestAppUser;
+            using (var md5Hash = MD5.Create())
+            {
+                if (user.Password != GetMd5Hash(md5Hash, oldPassword))
+                {
+                    return Json(false, JsonRequestBehavior.AllowGet);
+                }
+<<<<<<< HEAD
+                user.Password = GetMd5Hash(md5Hash, newPassword);
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return Json(session.Id, JsonRequestBehavior.AllowGet);
+            }
+=======
+                user.Password = GetMd5Hash(md5Hash, NewPassword);
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            
+>>>>>>> 8123fad9a1c440036d485987d6da0c1843534cca
+        }
+        public JsonResult SendSms(string phone, Guid sessionId)
+        {
+            var code = SendCode(phone);
+            var result = AddSms(code, sessionId);
+            if (result)
+            {
+                return Json(code, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }//убрать отправку кода на клиент
+        public bool AddSms(int code, Guid sessionId)
+        {
+            var session = db.RestAppSessions.SingleOrDefault(s => s.Id == sessionId);
+            if (session == null) return false;
+            var sms = new RestSms { Date = DateTime.UtcNow, Code = code, RestAppUser = db.RestAppUsers.Find(session.RestAppUser.Id), UsedSms = UsedSms.NotUsed };
+            db.RestSmses.Add(sms);
+            db.SaveChanges();
+            return true;
+        }
+        public JsonResult ChangePhone(int code, Guid sessionId, string newPhone)
+        {
+            var session = db.RestAppSessions.SingleOrDefault(s => s.Id == sessionId);
+            if (session == null) return Json(false, JsonRequestBehavior.AllowGet);
+
+            var sms = db.RestSmses.Where(u => u.RestAppUser.Id == session.RestAppUser.Id).OrderByDescending(o => o.Date).FirstOrDefault();
+            if (sms == null) return Json(false, JsonRequestBehavior.AllowGet);
+            if (sms.Code == code)
+            {
+                sms.UsedSms = UsedSms.Used;
+                db.Entry(sms).State = EntityState.Modified;
+                db.SaveChanges();
+
+                var user = session.RestAppUser;
+                user.Phone = newPhone;
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ReservationTable(int pointId, string subject, string content)
+        {
+            var fromAddress = new MailAddress("info@intouchclub.ru");
+            var rest = db.RestPoints.SingleOrDefault(r => r.Point.Id == pointId);
+            if (rest == null) return Json(false, JsonRequestBehavior.AllowGet);
+            var toAddress = new MailAddress(rest.EmailToReservation);
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, "intouch")
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = content
+            })
+            {
+                try
+                {
+                    smtp.Send(message);
+
+                    return Json(true, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception ext)
+                {
+                    return Json(ext.ToString(), JsonRequestBehavior.AllowGet);
+                }
+            }          
+        }
+        public JsonResult SendReview(int poindId, Guid sessionId, string comment)
+        {
+            var session = db.RestAppSessions.SingleOrDefault(s => s.Id == sessionId);
+            if (session == null) return Json(false, JsonRequestBehavior.AllowGet);
+            var point = db.RestPoints.SingleOrDefault(p => p.Point.Id == poindId);
+            if (point == null) return Json(false, JsonRequestBehavior.AllowGet);
+            var user = session.RestAppUser;
+            var review = new RestReview { Date = DateTimeOffset.UtcNow, RestAppUser = user, Comment = comment, RestPoint = point};
+            db.RestReviews.Add(review);
+            db.SaveChanges();
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+    }
+}

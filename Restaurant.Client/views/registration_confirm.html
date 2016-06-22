@@ -1,0 +1,10 @@
+<div class="registration-screen" ng-controller="registrationConfirmCtrl as vm">
+    <h1 class="header">Регистрация</h1>
+    <form class="tiny">
+        <h2 class="comment">На ваш номер {{vm.phone}} было выслано СМС с кодом подтверждения. Введите его ниже:</h2>
+        <input-validate class="input-reg user-number">
+            <input type="text" placeholder="Код подтверждения" ng-model="vm.code"/>
+        </input-validate>
+        <button id="submit-button" type="submit" class="button" ng-click="vm.userRegistrationCheckCode()">Далее</button>
+    </form>
+</div>

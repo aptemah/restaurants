@@ -1,0 +1,18 @@
+<div class="menu-screen" ng-controller="menuNextCtrl as vm">
+  <h1 class="header"><img ng-src="{{vm.parentImage}}" alt=""> {{vm.parentBlock}}</h1>
+  <a ng-href="#/menu_next/{{item.Id}}" ng-repeat="item in vm.items" ng-if="vm.statusOfPage == 'category'"><button class="button button_block" type="button"><img ng-src="{{vmMenu.imagePath + item.Image}}" alt="">{{item.Name}}</button></a>
+  <div class="product" ng-click="go('/menu_last/' + item.Id)" ng-repeat="item in vm.items" ng-if="vm.statusOfPage == 'product'">
+    <div class="image" style="background-image: url('{{vmMenu.imagePath + item.Image}}')"></div>
+    <div class="info">
+        <div class="name">{{item.Name}}</div>
+        <div class="price">Цена: {{item.Price}}руб.</div>
+        <div class="weight">{{item.Weight}}</div>
+        <div class="order">
+            <span>кол</span>
+            <input type="number" ng-model="quantityRepeat" ng-init="quantityRepeat=1" ng-click="vmm.stopPropagation($event)" min="1"/>
+            <button class="button_no-hover" ng-click="vmMenu.addToOrderList($event, item.Id, quantityRepeat); vm.bounce();" ng-active-element>Добавить в корзину</button>
+        </div>
+        <div class="to-favorites" ng-class="{'out-of-favorites' : item.Favorite}" ng-favorites="{{item.Id}}" ng-hide="vmm.userIsNotRegistred" ></div>
+    </div>
+  </div>
+</div>

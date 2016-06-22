@@ -1,0 +1,44 @@
+﻿<div class="booking-screen" ng-controller="bookingCtrl as vm">
+  <h1 class="header">Бронирование</h1>
+  <div class="main-content">
+      <input type="tel" class="tell-client" placeholder="Ваш моб.номер" ng-model="vm.userPhone">
+      <div class="time-block">
+          <div class="input-block clear-fix">
+              <div class="input-block-one">
+                  <span class="clear-fix">Дата</span>
+                  <input type="number" class="day" ng-model="vm.day" min="1" max="31">
+                  <input type="number" class="month" ng-model="vm.month" min="1" max="12">
+              </div>
+              <div class="input-block-two">
+                  <span class="clear-fix">Время</span>
+                  <input type="number" class="hour" ng-model="vm.hour"  min="0" max="23">
+                  <input type="number" class="minutes" ng-model="vm.minute" min="0" max="59">
+              </div>
+          </div>
+      </div>
+      <div class="number-of-people clear-fix">
+          <span>Количество людей</span>
+          <input type="number" ng-model="vm.peopleQuantity" ng-init="vm.peopleQuantity=2" min="1">
+      </div>
+      <div class="comment">
+          <h2>Комментарий</h2>
+          <textarea name="name" id="id" cols="30" rows="2" placeholder="Ваш комментарий" ng-model="vm.comment" my-maxlength="1000"></textarea>
+          <div class="max-length" ng-show="vm.maxlength">Максимум — 1000 символов</div>
+      </div>
+      <button class="button" ng-click="vm.sendReservationRequest()">Забронировать столик</button>
+      <a href="tel:{{vmm.clubTelephone}}"><button class="button phone">Забронировать по телефону</button></a>
+  </div>
+  <div class="popup" ng-show="vm.bookingSuccess" popup-close-able>
+    <div class="main">
+      <img src="img/reservation-ok.png" alt="">
+      <h3>Столик забронирован. <br/>Спасибо за Ваш заказ. Мы с Вами свяжимся в ближайшее время для уточнения и подтверждения вашей заявки.</h3>
+      <button class="button" ng-click="vm.bookingSuccess = false">ОК</button>
+    </div>
+  </div>
+  <div class="popup" ng-show="vm.noMessage" popup-close-able>
+    <div class="main">
+      <h3>Заполните, пожалуйста, все поля!</h3>
+      <button class="button" ng-click="vm.noMessage = false">ОК</button>
+    </div>
+  </div>
+</div>

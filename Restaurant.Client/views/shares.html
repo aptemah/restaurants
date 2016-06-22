@@ -1,0 +1,10 @@
+<div class="shares-screen" ng-controller="sharesCtrl as vm">
+  <h1 class="header no-bg">Акции</h1>
+  <div class="main-content">
+    <div class="item" ng-class="{details : vm.details[$index]}" ng-click="vm.details[$index] = !vm.details[$index]" ng-repeat="item in vm.shares" ng-init="vm.details[$index] = false">
+      <div class="shares-img" style="background-image: url('{{vm.imagePath + item.Image}}')"></div>
+      <p class="details">{{item.Descript}}</p>
+      <p ng-show="!vm.details[$index]">{{item.Name}}<span class="more"> Подробнее...</span></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="news-list-screen" ng-controller="newsListCtrl as vm">
+  <h1 class="header no-bg">Новости</h1>
+    <div class="main-content">
+        <div ng-click="go('news/' + item.Id)" class="post" ng-repeat="item in vm.news">
+          <h3 class="people-name">{{item.Name}}</h3>
+          <p>{{item.SmallDescription}}</p>
+          <div class="post-date">{{item.DateCreateDay}}.{{item.DateCreateMonth}}.{{item.DateCreateYear}}</div>
+        </div>
+    </div>
+</div>

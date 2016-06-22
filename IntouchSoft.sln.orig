@@ -1,0 +1,241 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{035F27D8-1280-4144-A9D6-0868FD01F0E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Staff", "Staff", "{274FB186-2AC1-4638-A405-F9A0A7C56AC1}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Personalization.Client", "http://localhost:24321", "{3DDE55EE-7BD2-443B-9616-C127740C806C}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_24321"
+		Debug.AspNetCompiler.PhysicalPath = "IntouchClub\Personalization.Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_24321\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_24321"
+		Release.AspNetCompiler.PhysicalPath = "IntouchClub\Personalization.Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_24321\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "IntouchClub\Personalization.Client\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{8819DCA5-B91F-4371-91F9-0102D6B25DD1} = {8819DCA5-B91F-4371-91F9-0102D6B25DD1}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiFi.Admin", "Staff\WiFi.Admin\WiFi.Admin.csproj", "{5A0735E5-4DD4-49F3-AA87-C68B4BFD7880}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karaoke.WebService", "IntouchClub\Karaoke.WebService\Karaoke.WebService.csproj", "{B80DFFDD-1D9C-405F-8AE7-7A8C391E9412}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Karaoke.Client", "http://localhost:25143", "{8DF329A2-5794-49A7-8D95-CB8EC68A422A}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_25143"
+		Debug.AspNetCompiler.PhysicalPath = "IntouchClub\Karaoke.Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_25143\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_25143"
+		Release.AspNetCompiler.PhysicalPath = "IntouchClub\Karaoke.Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_25143\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "IntouchClub\Karaoke.Client\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{B80DFFDD-1D9C-405F-8AE7-7A8C391E9412} = {B80DFFDD-1D9C-405F-8AE7-7A8C391E9412}
+		{163F28E0-1188-451C-A963-8D5A64903132} = {163F28E0-1188-451C-A963-8D5A64903132}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{27CDA97B-F3C9-4941-B791-D64DDF9F0A4A}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social.WebService", "IntouchClub\Social.WebService\Social.WebService.csproj", "{163F28E0-1188-451C-A963-8D5A64903132}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Promoactions", "IntouchClub\Promoactions\Promoactions.csproj", "{9EABF11E-62F7-4FCF-9F91-1C77F40A8975}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Promoactions.Admin", "Staff\Promoactions.Admin\Promoactions.Admin.csproj", "{AD9B7762-7127-457E-B287-E868D90E8922}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{CFE9B16F-8F69-401C-80A2-2637F22B0B53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content", "Content\Content.csproj", "{5697F3EC-481F-433E-89E3-68C74FDDA4C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessService", "IntouchClub\FitnessService\FitnessService.csproj", "{CDD92B7E-4A74-449D-AB63-AA9420C2F741}"
+EndProject
+<<<<<<< HEAD
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitAppService", "FitAppService\FitAppService.csproj", "{B1902AA4-C53E-404E-99B2-C54682266527}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "FitAppClient", "http://localhost:6942", "{A8C5F59C-A5D1-4231-B42A-A4896F6560E4}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_6942"
+		Debug.AspNetCompiler.PhysicalPath = "IntouchClub\FitAppClient\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_6942\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_6942"
+		Release.AspNetCompiler.PhysicalPath = "IntouchClub\FitAppClient\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_6942\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "IntouchClub\FitAppClient\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karaoke.Admin", "Staff\Karaoke.Admin\Karaoke.Admin.csproj", "{8CEA3362-C6D4-494F-9197-328FA2E8AFC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Personalization.WebService", "IntouchClub\Personalization.WebService\Personalization.WebService.csproj", "{8819DCA5-B91F-4371-91F9-0102D6B25DD1}"
+>>>>>>> Andrey-dev
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		andrey|Any CPU = andrey|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.andrey|Any CPU.ActiveCfg = andrey|Any CPU
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.andrey|Any CPU.Build.0 = andrey|Any CPU
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.andrey|Any CPU.Deploy.0 = andrey|Any CPU
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DDE55EE-7BD2-443B-9616-C127740C806C}.andrey|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DDE55EE-7BD2-443B-9616-C127740C806C}.andrey|Any CPU.Build.0 = Debug|Any CPU
+		{3DDE55EE-7BD2-443B-9616-C127740C806C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DDE55EE-7BD2-443B-9616-C127740C806C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DDE55EE-7BD2-443B-9616-C127740C806C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DDE55EE-7BD2-443B-9616-C127740C806C}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{5A0735E5-4DD4-49F3-AA87-C68B4BFD7880}.andrey|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A0735E5-4DD4-49F3-AA87-C68B4BFD7880}.andrey|Any CPU.Build.0 = Debug|Any CPU
+		{5A0735E5-4DD4-49F3-AA87-C68B4BFD7880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A0735E5-4DD4-49F3-AA87-C68B4BFD7880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A0735E5-4DD4-49F3-AA87-C68B4BFD7880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A0735E5-4DD4-49F3-AA87-C68B4BFD7880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B80DFFDD-1D9C-405F-8AE7-7A8C391E9412}.andrey|Any CPU.ActiveCfg = Release|Any CPU
+		{B80DFFDD-1D9C-405F-8AE7-7A8C391E9412}.andrey|Any CPU.Build.0 = Release|Any CPU
+		{B80DFFDD-1D9C-405F-8AE7-7A8C391E9412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B80DFFDD-1D9C-405F-8AE7-7A8C391E9412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B80DFFDD-1D9C-405F-8AE7-7A8C391E9412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B80DFFDD-1D9C-405F-8AE7-7A8C391E9412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF329A2-5794-49A7-8D95-CB8EC68A422A}.andrey|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF329A2-5794-49A7-8D95-CB8EC68A422A}.andrey|Any CPU.Build.0 = Debug|Any CPU
+		{8DF329A2-5794-49A7-8D95-CB8EC68A422A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF329A2-5794-49A7-8D95-CB8EC68A422A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF329A2-5794-49A7-8D95-CB8EC68A422A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF329A2-5794-49A7-8D95-CB8EC68A422A}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{163F28E0-1188-451C-A963-8D5A64903132}.andrey|Any CPU.ActiveCfg = Release|Any CPU
+		{163F28E0-1188-451C-A963-8D5A64903132}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{163F28E0-1188-451C-A963-8D5A64903132}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{163F28E0-1188-451C-A963-8D5A64903132}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{163F28E0-1188-451C-A963-8D5A64903132}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EABF11E-62F7-4FCF-9F91-1C77F40A8975}.andrey|Any CPU.ActiveCfg = Release|Any CPU
+		{9EABF11E-62F7-4FCF-9F91-1C77F40A8975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EABF11E-62F7-4FCF-9F91-1C77F40A8975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EABF11E-62F7-4FCF-9F91-1C77F40A8975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EABF11E-62F7-4FCF-9F91-1C77F40A8975}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD9B7762-7127-457E-B287-E868D90E8922}.andrey|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9B7762-7127-457E-B287-E868D90E8922}.andrey|Any CPU.Build.0 = Release|Any CPU
+		{AD9B7762-7127-457E-B287-E868D90E8922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD9B7762-7127-457E-B287-E868D90E8922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD9B7762-7127-457E-B287-E868D90E8922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9B7762-7127-457E-B287-E868D90E8922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}.andrey|Any CPU.ActiveCfg = Release|Any CPU
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}.andrey|Any CPU.Build.0 = Release|Any CPU
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6}.andrey|Any CPU.ActiveCfg = andrey|Any CPU
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6}.andrey|Any CPU.Build.0 = andrey|Any CPU
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD92B7E-4A74-449D-AB63-AA9420C2F741}.andrey|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD92B7E-4A74-449D-AB63-AA9420C2F741}.andrey|Any CPU.Build.0 = Release|Any CPU
+		{CDD92B7E-4A74-449D-AB63-AA9420C2F741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD92B7E-4A74-449D-AB63-AA9420C2F741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD92B7E-4A74-449D-AB63-AA9420C2F741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD92B7E-4A74-449D-AB63-AA9420C2F741}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
+		{B1902AA4-C53E-404E-99B2-C54682266527}.andrey|Any CPU.ActiveCfg = Release|Any CPU
+		{B1902AA4-C53E-404E-99B2-C54682266527}.andrey|Any CPU.Build.0 = Release|Any CPU
+		{B1902AA4-C53E-404E-99B2-C54682266527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1902AA4-C53E-404E-99B2-C54682266527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1902AA4-C53E-404E-99B2-C54682266527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1902AA4-C53E-404E-99B2-C54682266527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8C5F59C-A5D1-4231-B42A-A4896F6560E4}.andrey|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8C5F59C-A5D1-4231-B42A-A4896F6560E4}.andrey|Any CPU.Build.0 = Debug|Any CPU
+		{A8C5F59C-A5D1-4231-B42A-A4896F6560E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8C5F59C-A5D1-4231-B42A-A4896F6560E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8C5F59C-A5D1-4231-B42A-A4896F6560E4}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8C5F59C-A5D1-4231-B42A-A4896F6560E4}.Release|Any CPU.Build.0 = Debug|Any CPU
+=======
+		{8CEA3362-C6D4-494F-9197-328FA2E8AFC3}.andrey|Any CPU.ActiveCfg = Release|Any CPU
+		{8CEA3362-C6D4-494F-9197-328FA2E8AFC3}.andrey|Any CPU.Build.0 = Release|Any CPU
+		{8CEA3362-C6D4-494F-9197-328FA2E8AFC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CEA3362-C6D4-494F-9197-328FA2E8AFC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CEA3362-C6D4-494F-9197-328FA2E8AFC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CEA3362-C6D4-494F-9197-328FA2E8AFC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8819DCA5-B91F-4371-91F9-0102D6B25DD1}.andrey|Any CPU.ActiveCfg = andrey|Any CPU
+		{8819DCA5-B91F-4371-91F9-0102D6B25DD1}.andrey|Any CPU.Build.0 = andrey|Any CPU
+		{8819DCA5-B91F-4371-91F9-0102D6B25DD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8819DCA5-B91F-4371-91F9-0102D6B25DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8819DCA5-B91F-4371-91F9-0102D6B25DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8819DCA5-B91F-4371-91F9-0102D6B25DD1}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> Andrey-dev
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{035F27D8-1280-4144-A9D6-0868FD01F0E0} = {CFE9B16F-8F69-401C-80A2-2637F22B0B53}
+		{3DDE55EE-7BD2-443B-9616-C127740C806C} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+		{5A0735E5-4DD4-49F3-AA87-C68B4BFD7880} = {274FB186-2AC1-4638-A405-F9A0A7C56AC1}
+		{B80DFFDD-1D9C-405F-8AE7-7A8C391E9412} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+		{8DF329A2-5794-49A7-8D95-CB8EC68A422A} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+		{163F28E0-1188-451C-A963-8D5A64903132} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+		{9EABF11E-62F7-4FCF-9F91-1C77F40A8975} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+		{AD9B7762-7127-457E-B287-E868D90E8922} = {274FB186-2AC1-4638-A405-F9A0A7C56AC1}
+		{30EF5A1C-F1A1-4C35-B641-DBBF259A9CF9} = {CFE9B16F-8F69-401C-80A2-2637F22B0B53}
+		{5697F3EC-481F-433E-89E3-68C74FDDA4C6} = {CFE9B16F-8F69-401C-80A2-2637F22B0B53}
+		{CDD92B7E-4A74-449D-AB63-AA9420C2F741} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+<<<<<<< HEAD
+		{B1902AA4-C53E-404E-99B2-C54682266527} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+		{A8C5F59C-A5D1-4231-B42A-A4896F6560E4} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+=======
+		{8CEA3362-C6D4-494F-9197-328FA2E8AFC3} = {274FB186-2AC1-4638-A405-F9A0A7C56AC1}
+		{8819DCA5-B91F-4371-91F9-0102D6B25DD1} = {98A66A1B-8C2F-484F-9AC8-EAEE7579F3C3}
+>>>>>>> Andrey-dev
+	EndGlobalSection
+EndGlobal

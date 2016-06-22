@@ -1,0 +1,53 @@
+<div class="chat-screen" ng-controller="chatCtrl as vm">
+  <div class="main-content" autoscroll="vm.scroll">
+    <div class="post clear-fix" ng-repeat="msg in vm.msgs" ng-class="{true: 'my', false: ''}[msg.Status=='my']">
+      <div class="photo-block">
+        <div class="post-photo" style="background-image: url('{{vm.imagePath + msg.SenderPhoto}}');"></div>
+        <p class="name">{{msg.SenderName}}</p>
+      </div>
+      <div class="message">
+        <div class="date-info clear-fix">
+          <p class="date">{{vm.AddZeroTODate(msg.Day)+':'+vm.AddZeroTODate(msg.Month)+':'+msg.Year}}</p>
+          <p class="time">{{vm.AddZeroTODate(msg.Hour)+':'+vm.AddZeroTODate(msg.Min)}}</p>
+        </div>
+        <p class="message-text" ng-if="msg.TypeMessage==0">{{msg.Messages}}</p>
+        <p class="message-text" ng-if="msg.TypeMessage==1">
+          <img src="http://stas.intouchclub.ru/intouchsoft/Content/Restaurant/message/{{msg.Messages}}" alt="photo">
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-massage-block">
+    <div class="upload-image">
+      <input type="file" id="input" my-directive name="file">
+      <label for="input">
+        <span class="box-file"></span>
+      </label>
+    </div>
+    <div class="message-area">
+      <input type="hidden" ng-model="vm.msgPhotoName"/>
+      <img ng-src="http://stas.intouchclub.ru/intouchsoft/Content/Restaurant/message/{{vm.msgPhotoName}}" ng-if="vm.msgPhotoName" />
+      <div name="area" id="area" contenteditable ng-model="vm.msgContent" ng-if="!vm.msgPhotoName" my-maxlength-div="5"></div>
+    </div>
+    <div class="submit-massage" ng-click="vm.sendMsg(vm.msgContent)">
+      <span class="fly"></span>
+    </div>
+  </div>
+
+  <div class="popup-change" ng-show="vm.popupShow">
+
+    <form class="change-name">
+
+      <div class="logo"></div>
+      <p>Выбрать имя</p>
+      <input-validate class="input-reg user-number">
+        <input type="text" ng-model="vm.userName" />
+      </input-validate>
+      <button type="submit" class="button" ng-click="vm.userChange('name')">Ок</button>
+
+      <div class="comment" ng-show="vm.errorMark">Проверьте правильность введенных данных</div>
+
+    </form>
+
+  </div>
+</div>

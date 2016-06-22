@@ -1,0 +1,27 @@
+﻿<div class="order-history-screen" ng-controller="historyCtrl as vm">
+  <h1 class="header">История заказов</h1>
+  <div class="main-content">
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <td>Дата</td>
+            <td>Сумма заказа</td>
+            <td>История бонусов</td>
+          </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in vm.orders">
+          <td>{{vmm.addZeroTODate(item.DateCreateDay)}}.{{vmm.addZeroTODate(item.DateCreateMonth)}}.{{item.DateCreateYear}}</td>
+          <td>{{item.OrderSum}}</td>
+          <td><span>{{item.Bonus.Operation == "0" ? -item.Bonus.Mount : item.Bonus.Mount }}</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+    <div class="order-history">
+
+    </div>

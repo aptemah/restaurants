@@ -1,0 +1,87 @@
+﻿#table.table{
+    border: 1px solid #363636;
+    border-spacing: 10px 20px;
+}
+#table tbody > tr > td {
+    width: 50px;
+}
+#table tr td:nth-of-type(1) {
+    width: 15%;
+    font-size: 20px;
+}
+.acceptBtn {
+    display: block;
+    width: 40%;
+    margin: 0 auto 10px;
+}
+.table tr .accept-div {
+    width: 100%;
+    margin-bottom: 0.8em;
+    text-align: center;
+}
+.table tr td > div {
+    width: 100%;
+}
+.table tbody tr > div {
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding: 10px 0 10px;
+}
+.table tr div img {
+    position: absolute;
+    background-color: #cecece;
+    display: block;
+    left: 10px;
+    max-width: 100px;
+    height: auto;
+    margin: 6px 10px 25px ;
+}
+.table tr div img + div {
+    font-size: 20px;
+    color: #393939;
+    margin-left: 130px;
+    min-height: 1em;
+}
+.table tr div img + div + div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 130px;
+    min-height: 1em;
+}
+.table tr div div .btn {
+    margin-left: 130px;
+}
+.table tbody > tr > div > button {
+    display: block;
+    width: 40%;
+    margin: 10px auto;
+}
+.table tbody > tr > div {
+    border: 1px solid #898989;
+}
+.table tr div > div {
+    display: block;
+    text-align: left;
+    overflow: visible;
+    position: relative;
+    margin-bottom: 10px;
+    min-height: 8em;
+}
+.table tr div > div:after {
+    width: 100%;
+    clear: both;
+    height: 1px;
+    content: '.';
+    visibility: hidden;
+}
+.table tr div > div:after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 1px;
+}
+.table > .btn {
+    display: block;
+    margin: 10px auto;
+    width: 60%;
+}

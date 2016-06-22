@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="/Scripts/linq.js"></script>
+    <script src="/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="/signalr/hubs"></script>
+    <link type="text/css" rel="stylesheet" href="Css/ChatStyle.css" />
+    <title>Люди</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="divChat" class="chatRoom">
+            <div class="content">
+                <div id="divChatWindow" class="chatWindow">
+                </div>
+                <div id="divusers" class="users">
+                </div>
+            </div>
+            <div class="messageBar">
+                <input class="textbox" type="text" id="txtMessage" />
+                <input id="btnSendMsg" type="button" value="Send" class="submitButton" />
+            </div>
+        </div>
+    </div>
+    <script src="/Scripts/chatroom.js"></script>
+</body>
+</html>

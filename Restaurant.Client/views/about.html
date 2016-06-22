@@ -1,0 +1,25 @@
+﻿<div class="about-screen" ng-controller="aboutCtrl as vm">
+  <h1 class="header">О ресторане</h1>
+  <div class="slider">
+    <div ng-include="'views/modules/touchslider.html'"></div>
+  </div>
+  <div class="info info-for-client">
+    <div class="information-about-club">
+      <div class="about-description">    
+          <p>{{vm.ClubDescription}}</p>
+      </div>
+    </div>
+    <div class="information-about-club">
+      <h2 class="header">Контакты</h2>
+      <div class="about-description">
+        <p>Адрес: {{vm.address}}</p>
+        <p>Время работы: {{vm.workingHours}}</p>
+        <p>Телефон: {{vm.phone}}</p>
+        <p>Email: {{vm.email}}</p>
+        <a ng-href="#/club_map"><button class="button w100 button_icon show-on-map">Показать на карте</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

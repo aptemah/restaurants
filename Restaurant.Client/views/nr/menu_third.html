@@ -1,0 +1,5 @@
+<div class="menu-screen" ng-controller="menuThirdCtrl as vm">
+  <h1 class="header">{{vm.parentBlock}}</h1>
+  <div class="logo"></div>
+  <a ng-href="#/menu_subcategory/{{x.Id}}" ng-repeat="x in vm.items"><button class="button button_block" type="button"><img ng-src="{{vm.imagePath + x.Image}}" alt="">{{x.Name}}</button></a>
+</div>

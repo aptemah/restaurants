@@ -1,0 +1,21 @@
+<div class="menu-last-screen" ng-controller="menuLastCtrl as vm">
+  <h1 class="header no-bg">{{vm.Name}}</h1>
+  <div class="photo" style="background-image: url('{{vmMenu.imagePath + vm.info.Image}}')"></div>
+  <div class="main-content">
+    <h3 class="name">{{vm.Name}}</h3>
+    <div class="like" ng-favorites="{{vm.Id}}"></div>
+    <p class="description">
+        {{vm.Description}}
+    </p>
+    <div class="price-block">
+      <div class="content"><!--
+      --><div class="price-product">Цена {{vm.Price}}руб.</div><!--
+      --><div class="price-product-number">
+           <span>кол</span>
+         </div><!--
+      --><div><input type="number" ng-model="vm.quantity" ng-init="vm.quantity=1" min="1"/></div><!--
+   --></div>
+    </div>
+    <button class="button_no-hover" ng-click="vmMenu.addToOrderList($event, vm.Id, vm.quantity); vm.bounce();" ng-active-element>Добавить в корзину</button>
+  </div>
+</div>

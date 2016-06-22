@@ -1,0 +1,50 @@
+<div id="sidebar">
+  <ul class="nav">
+
+    <a class="link-home" href="#/home">
+      <li class="header-menu"><div class="logo"></div><div class="text"><span>{{vmm.clubName}}</span> на <span>{{vmm.clubNetwork}}</span></div></li>
+    </a>
+
+    <a class="link-home" href="#/home">
+      <li class="home"><div class="img"></div>Главная</li>
+    </a>
+
+    <a class="link-about" href="#/about">
+      <li class="about"><div class="img"></div>О заведении</li>
+    </a>
+
+    <a class="link-food" href="#/menu_first/null">
+      <li class="food"><div class="img"></div>Меню</li>
+    </a>
+
+    <a class="link-actions" href="#/shares">
+      <li class="actions"><div class="img"></div>Акции</li>
+    </a>
+
+    <a class="link-news" href="#/news_list">
+      <li class="news"><div class="img"></div>Новости</li>
+    </a>
+
+    <a class="link-booking" href="#/booking">
+      <li class="booking"><div class="img"></div>Бронирование</li>
+    </a>
+
+    <a class="link-chat" ng-click="goForRegistred('/chat')" ng-class="{disabled : vmm.userIsNotRegistred}">
+      <li class="chat"><div class="img"></div>Чат</li>
+    </a>
+
+    <a class="link-reviews" ng-click="goForRegistred('/reviews')" ng-class="{disabled : vmm.userIsNotRegistred}">
+      <li class="reviews"><div class="img"></div>Отзывы</li>
+    </a>
+
+    <a class="link-login" ng-href="{{bonusCardUrl}}/#/start?userId={{vmm.userId}}&pointId={{vmm.globalPoint}}&reg=0">
+      <li class="logout"><div class="img"></div>Моя бонусная карта</li>
+    </a>
+
+    <a class="link-feedback" ng-href="#/feedback">
+      <li class="feedback"><div class="img"></div>Обратная связь</li>
+    </a>
+
+  </ul>
+  <div id="slide-strip"></div>
+</div>

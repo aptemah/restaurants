@@ -1,0 +1,12 @@
+<div class="touchslider">
+  <div class="touchslider-viewport" style="width: 100%; overflow:hidden">
+    <div>
+      <div class="touchslider-item" ng-repeat="x in vm.slides">
+        <img ng-src="{{x.pictureUrl}}">
+      </div>
+    </div>
+  </div>
+  <div class="nav-touchslider">
+    <span class="touchslider-nav-item" ng-repeat="x in vm.slides" ng-class="{'touchslider-nav-item-current' : $first}" the-last-slide-script></span>
+  </div>
+</div>

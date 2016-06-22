@@ -1,0 +1,14 @@
+<div class="registration-screen" ng-controller="authorizationCtrl as vm">
+  <div class="logo"></div>
+  <form class="wrap-of-inputs">
+    <input-validate class="input-reg user-number">
+        <input type="tel" placeholder="Номер телефона" ng-model="vm.phone" ng-focus="vm.phone = vm.phoneNumberLayout" ng-blur="vm.phoneNumberLayout = vm.phone" autocomplete/>
+    </input-validate>
+    <input-validate class="input-reg password">
+        <input type="password" placeholder="Пароль" ng-model="vm.password"/>
+    </input-validate>
+    <div class="comment error" ng-show="vm.errorMark">Проверьте правильность введенных данных</div>
+    <button class="button" ng-click="vm.userAuthorization()" ng-disabled="vm.buttonClicked">OK</button>
+    <a ng-href="#/password_recovery_phone"><button class="button button_transparent">Забыли пароль?</button></a>
+  </form>
+</div>

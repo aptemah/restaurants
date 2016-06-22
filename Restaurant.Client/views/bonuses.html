@@ -1,0 +1,16 @@
+﻿<div class="bonus-screen" ng-controller="bonusesCtrl as vm">
+  <h1 class="header">Мои бонусы</h1>
+  <div class="piggy-bank"></div>
+  <div class="my-bonus">
+    <span>Мои бонусы:</span>
+    <span class="my-bonus-number">{{vmm.bonuses}}руб.</span>
+    <p>Вы можите оплатить бонусами любые блюда и напитки в нашем заведении , для этого оформите заказ по меню и выбирите способ оплаты “бонусами”</p>
+    <a href="#/menu_first/null"><button class="button">Меню</button></a>
+  </div>
+  <div class="popup" ng-show="vm.ifNotAuthorized">
+    <div class="main"><img ng-src="img/re-enter.png" alt="">
+        <h3> Для использования бонусов необходимо авторизироватся</h3>
+        <button class="button" ng-click="vm.ifNotAuthorized = false">ОК</button>
+    </div>
+  </div>
+</div>
