@@ -341,7 +341,6 @@ input[type="button"] {
       li {
         position: relative;
         display: inline-block;
-        color: $regText;
         text-align: left;
         font-size: 1.05em;
         font-family: $textM;
@@ -357,6 +356,9 @@ input[type="button"] {
         cursor: pointer;
         -webkit-transition: all .5s;
         transition: all .5s;
+        &.tap {
+          background-color: rgba(60, 10, 22, 0.62);
+        }
         div.img {
           display: inline-block;
           position: absolute;
@@ -405,6 +407,17 @@ input[type="button"] {
   }
 }
 /*separate blocks отдельные блоки*/
+.spinner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/load.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 100;
+}
 .button {
   cursor: pointer;
   display: inline-block;
@@ -1325,6 +1338,7 @@ input[type="radio"]:checked + label span {
 /////clear fix /////
 .clear-fix {
   overflow: hidden;
+  clear: both;
   &.clear-fix:before, &.clear-fix:after {
     content: "";
     display: table;

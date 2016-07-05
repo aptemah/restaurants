@@ -2,13 +2,13 @@
   <div class="main-content" autoscroll="vm.scroll">
     <div class="post clear-fix" ng-repeat="msg in vm.msgs" ng-class="{true: 'my', false: ''}[msg.Status=='my']">
       <div class="photo-block">
-        <div class="post-photo" style="background-image: url('{{vm.imagePath + msg.SenderPhoto}}');"></div>
         <p class="name">{{msg.SenderName}}</p>
       </div>
       <div class="message">
         <div class="date-info clear-fix">
+          <p class="time" ng-show="msg.Status=='my'">{{vm.AddZeroTODate(msg.Hour)+':'+vm.AddZeroTODate(msg.Min)}}</p>
           <p class="date">{{vm.AddZeroTODate(msg.Day)+':'+vm.AddZeroTODate(msg.Month)+':'+msg.Year}}</p>
-          <p class="time">{{vm.AddZeroTODate(msg.Hour)+':'+vm.AddZeroTODate(msg.Min)}}</p>
+          <p class="time" ng-hide="msg.Status=='my'">{{vm.AddZeroTODate(msg.Hour)+':'+vm.AddZeroTODate(msg.Min)}}</p>
         </div>
         <p class="message-text" ng-if="msg.TypeMessage==0">{{msg.Messages}}</p>
         <p class="message-text" ng-if="msg.TypeMessage==1">

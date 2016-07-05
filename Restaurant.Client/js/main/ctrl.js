@@ -204,17 +204,17 @@ restaurantApp.controller("chatCtrl", ["$scope", "$http", "sessionData", "$timeou
       string = htmlDecode(string);
       $timeout(function(){vm.scroll = true;},10)
       if ($scope.vm.msgPhotoName) {
-          vm.socialConnection.social.invoke("SendMessage", $scope.vm.msgPhotoName, 1, sessionData.sessionId, sessionData.clubId);
+          vm.socialConnection.social.invoke("SendMessage", $scope.vm.msgPhotoName, 1, sessionData.sessionId, sessionData.clubId, localStorage.userName);
           $scope.vm.msgPhotoName = null;
       } else {
-          vm.socialConnection.social.invoke("SendMessage", string, 0, sessionData.sessionId, sessionData.clubId);
+          vm.socialConnection.social.invoke("SendMessage", string, 0, sessionData.sessionId, sessionData.clubId, localStorage.userName);
           $scope.vm.msgContent = "" ;
       }
   }
   vm.socialConnection.startResponse("onConnected", function (con) {
   });
   vm.socialConnection.startResponse("sendMessages", function (msgs) {
-      $timeout(function(){vm.scroll = true;},10)
+      $timeout(function(){vm.scroll = true;},10);
       vm.msgs.push(msgs);
   });
   vm.socialConnection.startResponse("sendMessagesToCaller", function (cal) {
@@ -439,7 +439,6 @@ restaurantApp.controller("clubMapCtrl", ["$scope", "$http", "sessionData", funct
 
 restaurantApp.controller("getParamsCtrl", ["$location", "$routeParams" ,"$rootScope", "userIdService", "sessionData", "$http",
   function ($location, $routeParams, $rootScope, userIdService, sessionData, $http) {
-
     var vm = this;
     vm.userId = $routeParams["userId"];
     vm.pointId = $routeParams["pointId"];
@@ -450,6 +449,7 @@ restaurantApp.controller("getParamsCtrl", ["$location", "$routeParams" ,"$rootSc
 
     userIdService.setUserId(vm.userId);
 
+    $rootScope.vmm.spinner = true;
     $http({
       method :'GET',
       url : sessionData.server + 'Cabinet/GetSession',
@@ -457,6 +457,7 @@ restaurantApp.controller("getParamsCtrl", ["$location", "$routeParams" ,"$rootSc
         "pointId": vm.pointId,
         "userId" : vm.userId
       }}).success(function(result) {
+      $rootScope.vmm.spinner = false;
 
       sessionData.sessionId = result.Session;
       localStorage.sessionId = result.Session;
@@ -645,7 +646,7 @@ restaurantApp.controller("menuCtrl", ["$rootScope", "$scope", "$location", "$htt
     $scope.clubName = localStorage.pointName;
     var str = location.hash;
     //страницы со скрытым верхним меню
-    var pagesMenuHide = 
+    var pagesMenuHide =
     [
     //"/enter" //вернуть в апп
       "/admin_panel",
@@ -657,7 +658,7 @@ restaurantApp.controller("menuCtrl", ["$rootScope", "$scope", "$location", "$htt
       $rootScope.hideMenuValue = false;
     };
     //страницы со скрытым "бургером"
-    var pagesBurgerHide = 
+    var pagesBurgerHide =
     [
 
     ];
@@ -670,7 +671,7 @@ restaurantApp.controller("menuCtrl", ["$rootScope", "$scope", "$location", "$htt
       $rootScope.vmm.hideBurgerValue = true;
     }
     //страницы с кнопкой "назад" вместо "бургера"
-    var pagesMenuBack = 
+    var pagesMenuBack =
     [
     "/password_recovery",
     "/authorization",
@@ -680,8 +681,8 @@ restaurantApp.controller("menuCtrl", ["$rootScope", "$scope", "$location", "$htt
     "/menu_next",
     "/menu_last",
     "/favorites",
-    "/enter", 
-    "/news/", 
+    "/enter",
+    "/news/",
     "/order"
     ];
     for (var i = pagesMenuBack.length - 1; i >= 0; i--) {
@@ -690,7 +691,7 @@ restaurantApp.controller("menuCtrl", ["$rootScope", "$scope", "$location", "$htt
       $scope.backMenuValue = false;
     };
     //небольшой костыль для "бургера" вместо кнопки "назад"))
-    var pagesMenuBurger = 
+    var pagesMenuBurger =
     [
     "/menu_first/null"
     ];
@@ -699,7 +700,7 @@ restaurantApp.controller("menuCtrl", ["$rootScope", "$scope", "$location", "$htt
       if (result !== -1) {$scope.backMenuValue = false; break;}
     };
     //отключение выпадайки
-    var pagesWithNoVipadaika = 
+    var pagesWithNoVipadaika =
     [
     "/club_map",
     "/club_select",
@@ -712,7 +713,7 @@ restaurantApp.controller("menuCtrl", ["$rootScope", "$scope", "$location", "$htt
       $scope.vipadaika = true;
     };
     //Клик по выпадайке возвращает на предыдущий экран
-    var pagesWithNoVipadaikaBack = 
+    var pagesWithNoVipadaikaBack =
     [
     "/club_select"
     ];
@@ -731,7 +732,7 @@ restaurantApp.controller("menuCtrl", ["$rootScope", "$scope", "$location", "$htt
       }
     };
     //отключение корзины
-    var pagesWithNoCart = 
+    var pagesWithNoCart =
     [
     "/club_select",
     "/authorization",
@@ -749,8 +750,8 @@ restaurantApp.controller("sharesCtrl", ["$scope", "$http", "$routeParams", "sess
   var vm = this;
   vm.imagePath = sessionData.imagePath + "article/";
     $http({
-      method:'GET', 
-      url: sessionData.server + 'Article/Article', 
+      method:'GET',
+      url: sessionData.server + 'Article/Article',
       params: {
         'pointId': sessionData.clubId
       }
@@ -779,8 +780,8 @@ restaurantApp.controller("reviewsCtrl", ["$scope", "$http", "$timeout", "session
   };
   vm.refreshReviewsList = function(realRefresh){
     $http({
-      method:'GET', 
-      url: sessionData.server + 'Cabinet/GetReviewList', 
+      method:'GET',
+      url: sessionData.server + 'Cabinet/GetReviewList',
       params: {
         'pointId': sessionData.clubId
       }
@@ -795,8 +796,8 @@ restaurantApp.controller("reviewsCtrl", ["$scope", "$http", "$timeout", "session
       vm.noMessage = true;
     } else {
       $http({
-        method:'POST', 
-        url: sessionData.server + 'Cabinet/SendReview', 
+        method:'POST',
+        url: sessionData.server + 'Cabinet/SendReview',
         data: {
           'pointId': sessionData.clubId,
           'sessionId': sessionData.sessionId,
@@ -815,8 +816,8 @@ restaurantApp.controller("reviewsCtrl", ["$scope", "$http", "$timeout", "session
 restaurantApp.controller("historyCtrl", ["$scope", "$http", "$routeParams", "sessionData", function($scope, $http, $routeParams, sessionData) {
   var vm = this;
     $http({
-      method:'GET', 
-      url: sessionData.server + 'Cabinet/GetOrderHistory', 
+      method:'GET',
+      url: sessionData.server + 'Cabinet/GetOrderHistory',
       params: {
         'sessionId': sessionData.sessionId
       }
@@ -835,8 +836,8 @@ restaurantApp.controller("bookingCtrl", ["$scope", "$http", "$timeout", "session
   vm.minute = 30;
   vm.comment = "";
   $http({
-    method:'GET', 
-    url: sessionData.server + 'Cabinet/GetUserInfo', 
+    method:'GET',
+    url: sessionData.server + 'Cabinet/GetUserInfo',
     params: {
       'sessionId' : sessionData.sessionId
     }
@@ -847,13 +848,13 @@ restaurantApp.controller("bookingCtrl", ["$scope", "$http", "$timeout", "session
   });
   var time = vm.hour + ':' + vm.minute;
   vm.sendReservationRequest = function(){
-    if (vm.userPhone == "") {
+    if (vm.userPhone == null || vm.userPhone == "" || $(".ng-invalid").length > 0) {
 
       vm.noMessage = true;
     } else {
       $http({
-        method:'GET', 
-        url: sessionData.server + 'Cabinet/ReservationTable', 
+        method:'GET',
+        url: sessionData.server + 'Cabinet/ReservationTable',
         params: {
           "hour" : vm.hour,
           "minute" : vm.minute,
@@ -867,6 +868,8 @@ restaurantApp.controller("bookingCtrl", ["$scope", "$http", "$timeout", "session
         }
       }).success(function(result) {
         vm.bookingSuccess = true;
+      }).error(function(){
+        vm.errorPopup = true;
       });
     };
   };
@@ -879,8 +882,8 @@ restaurantApp.controller("feedbackCtrl", ["$scope", "$http", "$timeout", "sessio
   vm.messageSent = false;
   vm.comment = "";
   $http({
-    method:'GET', 
-    url: sessionData.server + 'Cabinet/GetUserInfo', 
+    method:'GET',
+    url: sessionData.server + 'Cabinet/GetUserInfo',
     params: {
       'sessionId' : sessionData.sessionId
     }
@@ -896,9 +899,10 @@ restaurantApp.controller("feedbackCtrl", ["$scope", "$http", "$timeout", "sessio
     if (vm.comment == "" || vm.userPhone == "" || vm.userEmail == "") {
       vm.noMessage = true;
     } else {
+
       $http({
-        method:'POST', 
-        url: sessionData.server + 'Cabinet/LeaveFeedback', 
+        method:'POST',
+        url: sessionData.server + 'Cabinet/LeaveFeedback',
         data: {
           'pointId' : sessionData.clubId,
           'phone' : vm.userPhone,
@@ -915,8 +919,8 @@ restaurantApp.controller("feedbackCtrl", ["$scope", "$http", "$timeout", "sessio
 restaurantApp.controller("newsListCtrl", ["$scope", "$http", "sessionData", function($scope, $http, sessionData) {
   var vm = this;
   $http({
-    method:'GET', 
-    url: sessionData.server + 'News/News', 
+    method:'GET',
+    url: sessionData.server + 'News/News',
     params: {
       'pointId' : sessionData.clubId
     }
@@ -932,8 +936,8 @@ restaurantApp.controller("newsCtrl", ["$scope", "$http", "$routeParams", "sessio
   $scope.$on("$routeChangeSuccess", function () {
     var newsId = $routeParams["newsId"];
     $http({
-      method:'GET', 
-      url: sessionData.server + 'News/OneNews', 
+      method:'GET',
+      url: sessionData.server + 'News/OneNews',
       params: {
         'newsId' : newsId
       }
@@ -950,15 +954,12 @@ restaurantApp.controller("bottomMenuCtrl", ["$rootScope", "$scope", "$http", "$r
   $scope.goBack = goBack;
   vm.Name = $scope.clubName;
   vm.goToChat = function(){
-    if ($rootScope.vmm.userIsNotRegistred) {
-    } else {
       $location.path("/chat");
-    };
   };
   $scope.$on( "$routeChangeSuccess", function() {
     $scope.clubName = localStorage.pointName;
     var str = location.hash;
-    var pagesBottomMenuHide = 
+    var pagesBottomMenuHide =
     [
       "/enter",
       "/registration",
@@ -982,8 +983,8 @@ restaurantApp.controller("aboutCtrl", ["$scope", "$http", "$routeParams", "sessi
   vm.slides = [];
   $scope.sliderProportions = 0.57;
     $http({
-      method:'GET', 
-      url: sessionData.server + 'Club/RestNetworkInfo', 
+      method:'GET',
+      url: sessionData.server + 'Club/RestNetworkInfo',
       params: {
         'pointId':sessionData.clubId
       }
@@ -994,7 +995,7 @@ restaurantApp.controller("aboutCtrl", ["$scope", "$http", "$routeParams", "sessi
       vm.phone = result.ClubTelephone;
       vm.email = result.Email;
       for (var i = result.Photos.length - 1; i >= 0; i--) {
-        vm.slides[i] = {'pictureUrl' : 'http://stas.intouchclub.ru/intouchsoft/Content/Restaurant/gallery/' + result.Photos[i].PhotoName};
+        vm.slides[i] = {'pictureUrl' : sessionData.imagePath + 'gallery/' + result.Photos[i].PhotoName};
       };
     });
 }]);

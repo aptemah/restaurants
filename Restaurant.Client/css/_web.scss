@@ -473,7 +473,7 @@
           background-image: url(../img/cart_delete.png);
           background-size: 50%;
           background-repeat: no-repeat;
-          background-position: right center;
+          background-position: right top;
           background-color: transparent;
           cursor: pointer;
         }
@@ -492,6 +492,7 @@
       width:50%;
       border-right:1px solid #000;
       display: inline-block;
+      float: left;
       label + span {
         width: 60%;
         float: left;
@@ -508,17 +509,17 @@
     }
     .order-time {
       padding: 0em 0em 1.5em 0.4em;
-      width:47%;
+      width:48%;
       display: inline-block;
       float: right;
       label {
         overflow: hidden;
         .box {
-          margin:0;
+          margin: 0 0 0 .4em;
         }
         .description {
           margin-top: 0.2em;
-          margin-left: 0.5em;
+          margin-left: 0.8em;
           float: left;
           width: 63%;
         }
@@ -542,6 +543,24 @@
       }
       .minutes {
         margin-left: 0.7em;
+      }
+    }
+    .table {
+      padding: 0em 0em 1.5em 0.4em;
+      width:48%;
+      display: inline-block;
+      float: right;
+      input {
+        font-size: 2em;
+        width: 1.5em;
+        height: 1.2em;
+        border: 2px solid #9c022a;
+        border-radius: .2em;
+        text-align: center;
+      }
+      div {
+        display: inline-block;
+        margin-left: .2em;
       }
     }
     .button, .button_no-hover {

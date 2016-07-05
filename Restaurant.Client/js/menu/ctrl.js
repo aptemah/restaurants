@@ -301,6 +301,23 @@ menuApp.controller("orderCtrl", ['service.orders', "$rootScope", "$scope", "$loc
   vm.popupShowWait = false;
   vm.popupAuthAsk = false;
   vm.openOrder = function(fromOpenOrderWithTelephon) {
+
+    $http({
+      method:'GET',
+      url: sessionData.server + 'Order/ActiveInactive',
+      params: {
+        "sessionId" : sessionData.sessionId
+      }
+    }).success(function(result) {
+      if (result == true) {
+        $rootScope.vmMenu.hasOpenOrder = false;
+      } else {
+        $rootScope.vmMenu.hasOpenOrder = true;
+      }
+    }).error(function(){
+      $rootScope.vmMenu.hasOpenOrder = false;
+    });
+
     if(localStorage.getItem('sessionId')) {//проверяем есть ли sessionId, если нет, выдаем поп-ап
       if (localStorage.getItem('agent') && !fromOpenOrderWithTelephon) {//проверяем, если у пользователя временный sessionId, который дается про заказе "по телефону", а также не вызвана ли функция из функции fromOpenOrderWithTelephon
         if (vm.reordering == true) {//если уже открыт заказ, получаем телефон с сервера и делаем дозаказ
@@ -336,7 +353,8 @@ menuApp.controller("orderCtrl", ['service.orders', "$rootScope", "$scope", "$loc
             "orders" : localStorage.order,
             "typeOrder" : vm.method,
             "pointId" : sessionData.clubId,
-            "cookTime" : vm.timeHM
+            "cookTime" : vm.timeHM,
+            "tableNo" : vm.tableNo
           }
         }).success(function(result) {
           if (result != true) {//проверяем нет ли оплаченных, но неподтвержденных заказов.
@@ -491,6 +509,7 @@ menuApp.controller("orderCtrl", ['service.orders', "$rootScope", "$scope", "$loc
 
       if (payMethod == 0) {
         vm.popupCashPayment = true;
+        //TODO добавить сюда вызов официанта каким-то образом
       };
 
       if (payMethod == 1) {

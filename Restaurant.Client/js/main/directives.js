@@ -108,6 +108,13 @@ restaurantApp.directive('popupCloseAble', function() {//Закрытие поп-
         }
     };
 });
+restaurantApp.directive('spinner', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'views/modules/spinner.html',
+      replace: true
+    }
+});
 restaurantApp.directive('myDirective', ['httpPostFactory', function (httpPostFactory) {
     return {
         restrict: 'A',
@@ -248,7 +255,8 @@ restaurantApp.directive('sideMenu', ['sessionData', function(sessionData) {
                   };
                 };
                 if (sidebar.hasClass("show")) {//если меню открыто, нужно запертить ему двигаться дальше вправо
-                  if (ev.deltaX < 0) {
+                  if (ev.deltaX < -30) {
+                    console.log();
                     sidebar.removeClass("transition");
                     var currentOffset = sidebar.css("transform");
                     var offsetValue = ev.deltaX + sidebarCurrentPosition;

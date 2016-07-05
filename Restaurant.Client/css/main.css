@@ -264,7 +264,6 @@ input[type="button"] {
       .wrap #sidebar .nav li {
         position: relative;
         display: inline-block;
-        color: #000000;
         text-align: left;
         font-size: 1.05em;
         font-family: myriadpro-regular;
@@ -280,6 +279,8 @@ input[type="button"] {
         cursor: pointer;
         -webkit-transition: all .5s;
         transition: all .5s; }
+        .wrap #sidebar .nav li.tap {
+          background-color: rgba(60, 10, 22, 0.62); }
         .wrap #sidebar .nav li div.img {
           display: inline-block;
           position: absolute;
@@ -318,6 +319,17 @@ input[type="button"] {
       content: ""; }
 
 /*separate blocks отдельные блоки*/
+.spinner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/load.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 100; }
+
 .button {
   cursor: pointer;
   display: inline-block;
@@ -1080,7 +1092,8 @@ input[type="radio"]:checked + label span {
   cursor: pointer; }
 
 .clear-fix {
-  overflow: hidden; }
+  overflow: hidden;
+  clear: both; }
   .clear-fix.clear-fix:before, .clear-fix.clear-fix:after {
     content: "";
     display: table; }
@@ -1650,7 +1663,7 @@ input[type="radio"]:checked + label span {
           background-image: url(../img/cart_delete.png);
           background-size: 50%;
           background-repeat: no-repeat;
-          background-position: right center;
+          background-position: right top;
           background-color: transparent;
           cursor: pointer; }
     .order-screen .main-content .summ-common {
@@ -1664,7 +1677,8 @@ input[type="radio"]:checked + label span {
       padding: 0 0.5em 1.5em 1em;
       width: 50%;
       border-right: 1px solid #000;
-      display: inline-block; }
+      display: inline-block;
+      float: left; }
       .order-screen .main-content .order-variant label + span {
         width: 60%;
         float: left;
@@ -1677,16 +1691,16 @@ input[type="radio"]:checked + label span {
         width: auto; }
     .order-screen .main-content .order-time {
       padding: 0em 0em 1.5em 0.4em;
-      width: 47%;
+      width: 48%;
       display: inline-block;
       float: right; }
       .order-screen .main-content .order-time label {
         overflow: hidden; }
         .order-screen .main-content .order-time label .box {
-          margin: 0; }
+          margin: 0 0 0 .4em; }
         .order-screen .main-content .order-time label .description {
           margin-top: 0.2em;
-          margin-left: 0.5em;
+          margin-left: 0.8em;
           float: left;
           width: 63%; }
       .order-screen .main-content .order-time .input-block {
@@ -1706,6 +1720,21 @@ input[type="radio"]:checked + label span {
           font-weight: 100; }
       .order-screen .main-content .order-time .minutes {
         margin-left: 0.7em; }
+    .order-screen .main-content .table {
+      padding: 0em 0em 1.5em 0.4em;
+      width: 48%;
+      display: inline-block;
+      float: right; }
+      .order-screen .main-content .table input {
+        font-size: 2em;
+        width: 1.5em;
+        height: 1.2em;
+        border: 2px solid #9c022a;
+        border-radius: .2em;
+        text-align: center; }
+      .order-screen .main-content .table div {
+        display: inline-block;
+        margin-left: .2em; }
     .order-screen .main-content .button, .order-screen .main-content .button_no-hover {
       width: 80%;
       display: block;
@@ -3956,11 +3985,14 @@ input[type="radio"]:checked + label span {
     text-align: center;
     z-index: 80;
     position: relative;
+    background-color: rgba(156, 2, 42, 0.05);
     -webkit-overflow-scrolling: touch; }
     .chat-screen .main-content .photo-block {
       float: left;
       position: relative;
-      width: 25%; }
+      width: 100%;
+      text-align: left;
+      background-color: #fff; }
       .chat-screen .main-content .photo-block .post-photo {
         position: absolute;
         left: 50%;
@@ -3982,10 +4014,11 @@ input[type="radio"]:checked + label span {
         background-size: cover; }
       .chat-screen .main-content .photo-block .name {
         position: relative;
-        top: 6em;
         width: 100%;
+        padding: .5em .5em 0;
         white-space: nowrap;
         overflow: hidden;
+        font-family: myriadpro-regular;
         -ms-text-overflow: ellipsis;
         text-overflow: ellipsis; }
     .chat-screen .main-content p {
@@ -3996,22 +4029,26 @@ input[type="radio"]:checked + label span {
         font-size: 0.9em; }
       .chat-screen .main-content p.time {
         color: #000;
-        float: right;
+        float: left;
+        padding-left: .5em;
         font-size: 0.9em; }
     .chat-screen .main-content .post {
       width: 93%;
       margin-left: 5%;
-      margin-top: 1em; }
+      margin-top: 1em;
+      border-radius: .3em;
+      box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.5); }
       .chat-screen .main-content .post .message {
-        min-height: 7em;
-        width: 70%;
+        min-height: 3em;
+        width: 100%;
         float: right;
         background-color: #fff;
         color: #121212; }
         .chat-screen .main-content .post .message .date-info {
           width: 100%;
           overflow: hidden;
-          padding: 0.2em 0.5em 0; }
+          padding: 0.2em 0.5em .2em;
+          border-bottom: 1px solid rgba(72, 72, 72, 0.43); }
         .chat-screen .main-content .post .message .message-text {
           line-height: 1.5em;
           margin-top: 0.5em;
@@ -4021,13 +4058,17 @@ input[type="radio"]:checked + label span {
             margin-top: 0.5em;
             max-width: 100%; }
       .chat-screen .main-content .post.my {
-        margin-right: 5%;
-        margin-top: 1em;
-        margin-bottom: 2em; }
+        margin-right: 5%; }
         .chat-screen .main-content .post.my .photo-block {
-          float: right; }
+          float: right;
+          text-align: right; }
         .chat-screen .main-content .post.my .message {
           float: left; }
+        .chat-screen .main-content .post.my .date {
+          float: right;
+          padding-right: .5em; }
+        .chat-screen .main-content .post.my .time {
+          float: right; }
   .chat-screen .footer-massage-block {
     background-color: #eaeaea;
     position: absolute;
@@ -4215,7 +4256,8 @@ input[type="radio"]:checked + label span {
     .booking-screen .main-content .comment {
       position: relative;
       width: 90%;
-      margin: 0 auto 1em; }
+      margin: 0 auto 1em;
+      color: #ffffff; }
       .booking-screen .main-content .comment textarea {
         width: 100%;
         padding: 0.2em 0.5em 0.2em 1em;
@@ -4251,6 +4293,7 @@ input[type="radio"]:checked + label span {
     overflow-y: auto;
     padding: 3.8em 1em 4em;
     height: 100%;
+    width: 100%;
     -webkit-overflow-scrolling: touch; }
     .reviews-screen .main-content:after {
       content: "";

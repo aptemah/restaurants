@@ -35,10 +35,19 @@
       <button class="button" ng-click="vm.bookingSuccess = false">ОК</button>
     </div>
   </div>
+
   <div class="popup" ng-show="vm.noMessage" popup-close-able>
     <div class="main">
-      <h3>Заполните, пожалуйста, все поля!</h3>
+      <h3>Заполните, пожалуйста, корректно все поля!</h3>
       <button class="button" ng-click="vm.noMessage = false">ОК</button>
     </div>
   </div>
+
+    <div class="popup" ng-show="vm.errorPopup" popup-close-able>
+        <div class="main">
+            <h3>Отказ сервера!</h3>
+            <button class="button" ng-click="vm.errorPopup = errorPopup">ОК</button>
+        </div>
+    </div>
+
 </div>

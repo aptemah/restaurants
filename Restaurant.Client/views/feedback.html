@@ -5,7 +5,7 @@
       <input type="tel" placeholder="Введите номер" class="tell" ng-model="vm.userPhone">
       <input type="email" placeholder="Адрес Email" ng-model="vm.userEmail">
       <textarea name="name" id="ara" cols="10" rows="4" placeholder="Текст вашего сообщения" ng-model="vm.comment"></textarea>
-      <button class="button" ng-click="vm.sendFeedback()">Отправить</button>
+      <button class="button" type="button" ng-click="vm.sendFeedback()">Отправить</button>
       <p>Телефон клуба:</p>
       <a href="tel:{{vmm.clubTelephone}}"><button class="button phone" type="button">{{vmm.clubTelephone}}</button></a>
     </form>

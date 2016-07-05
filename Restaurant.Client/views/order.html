@@ -45,10 +45,13 @@
         </label>
         <div class="input-block"><input type="number" class="hour" ng-model="vm.time.hour" ng-show="vm.timeToTime" ng-init="vm.time.hour=vm.returnHours()" min="00" max="24"><input type="number" class="minutes" ng-model="vm.time.minute" ng-show="vm.timeToTime" min="00" max="60" ng-init="vm.time.minute=30"></div>
       </div>
+
+      <div class="table" ng-hide="vm.ifNoOrder() || vm.reordering">
+        <input type="number" ng-model="vm.tableNo">
+        <div>Номер столика</div>
+      </div>
+
       <div class="clear-fix"></div>
-
-
-
 
       <h3 class="summ-common" ng-hide="vm.ifNoOrder() || vm.reordering">Общая сумма: <span class="order-summ">{{vm.getCartAmount(vm.cartAmount)}}<span>руб.</span></span></h3>
       <h3 class="summ-common" ng-hide="vm.ifNoOrder() || !vm.reordering">Сумма дозаказа: <span class="order-summ">{{vm.getCartAmount(vm.cartAmount)}}<span>руб.</span></span></h3>
@@ -164,6 +167,21 @@
     <div class="main">
       <h3>Мало бонусов</h3>
       <button class="button" ng-click="vm.popupLowBonuses = false">ОК</button>
+    </div>
+  </div>
+
+  <div class="popup" ng-show="vm.popupBonusPaymentSuccess">
+    <div class="main">
+      <h3>Оплата бонусами осуществлена успешно!</br>Посмотреть остаток бонусов можно здесь:</h3>
+      <a ng-href="{{bonusCardUrl}}/#/start?userId={{vmm.userId}}&pointId={{vmm.globalPoint}}&reg=0"><button class="button">Мои бонусы</button></a>
+      <button class="button" ng-click="vm.popupBonusPaymentSuccess = false">ОК</button>
+    </div>
+  </div>
+
+  <div class="popup" ng-show="vm.popupCashPayment" popup-close-able>
+    <div class="main">
+      <h3>Ожидайте, к Вам подойдет официант!</h3>
+      <button class="button block" ng-click="vm.popupCashPayment = false">ОК</button>
     </div>
   </div>
 
